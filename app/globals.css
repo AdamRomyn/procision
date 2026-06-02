@@ -258,7 +258,11 @@ p {
   letter-spacing: 0.01em;
 }
 .media.tall {
+  /* all children are position:absolute, so without an explicit size the box
+     collapses to a sliver — give it the column's full width and a tall height */
+  width: 100%;
   min-height: 420px;
+  height: min(78vh, 760px);
 }
 /* live 3D scene stage — transparent, object centered, no background */
 .hero-media {
