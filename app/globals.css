@@ -402,6 +402,14 @@ p {
   color: #e6e6e6;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+/* certificate label — no box, so it doesn't read as a button */
+.pill-bare {
+  background: transparent;
+  color: #cfcfcf;
+  border: 0;
+  padding: 0;
+  letter-spacing: 0.01em;
+}
 .pill-dot {
   width: 6px;
   height: 6px;
@@ -586,6 +594,11 @@ header.nav {
   flex-wrap: wrap;
   margin-top: 30px;
 }
+.hero-rule {
+  margin: 26px 0 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
 .hero .founders {
   margin-top: 26px;
   color: #a3a3a3;
@@ -603,6 +616,7 @@ header.nav {
 }
 .hero .pills {
   margin-top: 18px;
+  gap: 10px 22px;
 }
 
 /* trust strip */
