@@ -145,19 +145,33 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            <div className="media tall">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://www.procision-manufacturing.com/wp-content/uploads/2025/07/group1-scaled-e1753076549699.avif"
-                alt="Precision-machined parts"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
+            <div className="hero-media">
+              <span className="hero-media-frame" aria-hidden="true"></span>
+              <div className="media tall">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://www.procision-manufacturing.com/wp-content/uploads/2025/07/group1-scaled-e1753076549699.avif"
+                  alt="Procision founding engineers on the factory floor"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+                <span className="media-grain" aria-hidden="true"></span>
+                <span className="media-shade" aria-hidden="true"></span>
+                <span className="media-corner media-corner-tl" aria-hidden="true"></span>
+                <span className="media-corner media-corner-br" aria-hidden="true"></span>
+                <div className="media-caption">
+                  Engineer-founders, on the floor in Shenzhen
+                </div>
+              </div>
+              <div className="media-stat">
+                <div className="media-stat-num">±0.005<span>mm</span></div>
+                <div className="media-stat-label">Held tolerance, first article</div>
+              </div>
             </div>
           </div>
         </div>
