@@ -260,6 +260,14 @@ p {
 .media.tall {
   min-height: 420px;
 }
+/* live 3D scene stage — fills the tall media frame */
+.media.tall.spline-stage {
+  height: 520px;
+  background: radial-gradient(120% 120% at 70% 20%, #242424, #121212 70%);
+}
+.spline-stage spline-viewer {
+  background: transparent;
+}
 
 /* ---- hero photo treatment (frame + overlays + floating stat) ---- */
 .hero-media {
