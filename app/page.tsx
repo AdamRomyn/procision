@@ -143,8 +143,8 @@ export default function Home() {
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                 </svg>
-                We&apos;re just engineer-founders on the floor in Shenzhen — from
-                the UK, Denmark &amp; South Africa.
+                Founders from the UK, Denmark &amp; South Africa — living in
+                China, on the floor with the team.
               </div>
               <a
                 className="link"
