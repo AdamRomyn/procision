@@ -455,16 +455,21 @@ header.nav {
 .hero {
   color: #fff;
   overflow: hidden;
+  /* fold fills the viewport, capped so it never gets absurdly tall */
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: min(100svh, 940px);
   /* slide up behind the transparent sticky nav so the gradient shows through */
   margin-top: -72px;
   padding-top: 72px;
   background:
-    /* subtle dot texture */
+    /* visible dot texture */
     radial-gradient(
-        rgba(255, 255, 255, 0.05) 1px,
-        transparent 1.4px
+        rgba(255, 255, 255, 0.14) 1.3px,
+        transparent 1.8px
       )
-      0 0 / 22px 22px,
+      0 0 / 24px 24px,
     radial-gradient(
       900px 500px at 80% -20%,
       rgba(255, 255, 255, 0.08),
@@ -472,8 +477,11 @@ header.nav {
     ),
     linear-gradient(165deg, #000000, #121212 65%, #1f1f1f);
 }
+.hero > .wrap {
+  width: 100%;
+}
 .hero .pad {
-  padding: 96px 0 88px;
+  padding: 72px 0 64px;
 }
 .hero-grid {
   display: grid;
