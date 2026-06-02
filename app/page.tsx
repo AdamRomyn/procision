@@ -112,11 +112,11 @@ export default function Home() {
               </p>
               <div className="btns">
                 <a className="btn btn-primary" href="#start">
-                  Request a DfM audit
+                  Upload CAD
                   <ArrowRight />
                 </a>
                 <a className="btn btn-light" href="#start">
-                  See how to get started
+                  Book a call
                 </a>
               </div>
               <div className="founders">
