@@ -269,8 +269,9 @@ p {
 }
 .spline-stage {
   width: 100%;
-  /* taller stage so the (tall) part has vertical room and doesn't look shrunk */
-  height: min(78vh, 760px);
+  /* big stage: more canvas pixels = part renders physically larger on screen
+     (without re-cropping, since Spline auto-fits to the canvas) */
+  height: min(92vh, 920px);
   background: transparent;
 }
 .spline-stage canvas {
@@ -569,7 +570,8 @@ header.nav {
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  /* give the 3D model column more room so the part renders large */
+  grid-template-columns: 0.82fr 1.18fr;
   gap: 54px;
   align-items: center;
 }

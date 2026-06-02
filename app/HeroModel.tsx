@@ -10,14 +10,16 @@ export default function HeroModel() {
     // No background — let the page show through instead of a grey block.
     spline.setBackgroundColor("transparent");
 
-    // Spline auto-fits the scene to the canvas on load, so a taller .spline-stage
+    // Spline auto-fits the scene to the canvas on load, so the big .spline-stage
     // (see globals.css) gives the tall part vertical room to fit uncropped — but
     // auto-fit also makes it render small, so we zoom back IN to fill the frame.
-    // 1.7 keeps the whole part in view with comfortable margins. Tune ~1.2–2.0.
-    spline.setZoom(1.7);
+    // 2.4 makes the part large while keeping it fully in view. Tune ~1.8–2.8.
+    spline.setZoom(2.4);
 
     // Lock the model to a fixed size/position: drag-to-rotate only,
     // no scroll-zoom (size change) and no panning (position change).
+    // This is Spline's native OrbitControls — enableZoom=false is the
+    // intended way to stop the wheel from resizing the part.
     const controls = spline.controls;
     if (controls) {
       controls.enableRotate = true;
