@@ -99,7 +99,7 @@ export default function Home() {
         <div className="wrap pad">
           <div className="hero-grid">
             <div>
-              <div className="eyebrow" style={{ color: "#6f9bff" }}>
+              <div className="eyebrow" style={{ color: "#bdbdbd" }}>
                 Western rigor · China velocity · Certainty
               </div>
               <h1 style={{ marginTop: 16 }}>
@@ -569,7 +569,7 @@ export default function Home() {
           >
             <div>
               <div className="logo" style={{ color: "#fff" }}>
-                PRO<b style={{ color: "var(--accent)" }}>C</b>ISION
+                PRO<b style={{ color: "#fff" }}>C</b>ISION
               </div>
               <p style={{ marginTop: 14, maxWidth: 260 }}>
                 Western-owned precision manufacturing in China. Prototype to
