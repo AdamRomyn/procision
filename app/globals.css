@@ -334,10 +334,8 @@ header.nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 10, 10, 0.72);
-  backdrop-filter: saturate(140%) blur(14px);
-  -webkit-backdrop-filter: saturate(140%) blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  border-bottom: 1px solid transparent;
 }
 .navbar {
   display: flex;
@@ -457,6 +455,9 @@ header.nav {
 .hero {
   color: #fff;
   overflow: hidden;
+  /* slide up behind the transparent sticky nav so the gradient shows through */
+  margin-top: -72px;
+  padding-top: 72px;
   background:
     /* subtle dot texture */
     radial-gradient(

@@ -99,10 +99,7 @@ export default function Home() {
         <div className="wrap pad">
           <div className="hero-grid">
             <div>
-              <div className="eyebrow" style={{ color: "#bdbdbd" }}>
-                Western rigor · China velocity · Certainty
-              </div>
-              <h1 style={{ marginTop: 16 }}>
+              <h1 style={{ fontSize: "clamp(28px, 3.8vw, 42px)" }}>
                 Western engineering standards.
                 <br />
                 <span className="accentword">
@@ -159,25 +156,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* trust strip */}
-      <div className="trust">
-        <div className="wrap">
-          <span>Building for OEMs in</span>
-          <strong>Medical Devices</strong>
-          <span>·</span>
-          <strong>Aerospace &amp; Defence</strong>
-          <span>·</span>
-          <strong>Industrial Automation</strong>
-          <span>·</span>
-          <strong>Semiconductor</strong>
-          <span>·</span>
-          <strong>EV &amp; Clean Energy</strong>
-          <span style={{ opacity: 0.6, fontStyle: "italic" }}>
-            (client logos when available)
-          </span>
-        </div>
-      </div>
 
       {/* ============ INDUSTRIES & CASE STUDIES ============ */}
       <section className="pad">
@@ -544,6 +522,25 @@ export default function Home() {
           </details>
         </div>
       </section>
+
+      {/* trust strip */}
+      <div className="trust">
+        <div className="wrap">
+          <span>Building for OEMs in</span>
+          <strong>Medical Devices</strong>
+          <span>·</span>
+          <strong>Aerospace &amp; Defence</strong>
+          <span>·</span>
+          <strong>Industrial Automation</strong>
+          <span>·</span>
+          <strong>Semiconductor</strong>
+          <span>·</span>
+          <strong>EV &amp; Clean Energy</strong>
+          <span style={{ opacity: 0.6, fontStyle: "italic" }}>
+            (client logos when available)
+          </span>
+        </div>
+      </div>
 
       {/* ============ CLOSING CTA BAND ============ */}
       <section className="pad cta-band">
