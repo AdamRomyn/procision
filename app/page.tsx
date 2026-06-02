@@ -146,12 +146,18 @@ export default function Home() {
               </div>
             </div>
             <div className="media tall">
-              <div className="ph">
-                IMAGE: macro shot of a precision-machined part (&quot;the
-                bling&quot;) —<br />
-                tight tolerances, brushed-metal finish. Optionally split with an
-                owner-on-the-floor shot.
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://www.procision-manufacturing.com/wp-content/uploads/2025/07/group1-scaled-e1753076549699.avif"
+                alt="Precision-machined parts"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
             </div>
           </div>
         </div>
