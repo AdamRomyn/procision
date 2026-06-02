@@ -434,6 +434,9 @@ header.nav {
   align-items: center;
   justify-content: space-between;
   height: 72px;
+  /* match the hero's wider container (1300px) so the logo and CTA line up
+     with hero content rather than the narrower default .wrap */
+  max-width: 1300px;
 }
 .logo {
   font-weight: 900;
