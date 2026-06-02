@@ -577,10 +577,11 @@ header.nav {
 }
 .hero-grid {
   display: grid;
-  /* give the 3D model column more room so the part renders large
-     (widened 0.82/1.18 → 0.74/1.26 for the 1.4× part) */
-  grid-template-columns: 0.74fr 1.26fr;
-  gap: 54px;
+  /* left column needs breathing room so the copy isn't cramped above the fold;
+     the model's on-screen size is driven by Spline zoom (HeroModel.tsx), not by
+     this column width — so we can give text more room AND render the part larger. */
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 48px;
   align-items: center;
 }
 .hero h1 {

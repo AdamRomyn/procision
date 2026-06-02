@@ -16,7 +16,7 @@ export default function HeroModel() {
     // Spline auto-fits the scene to the canvas on load, so the big .spline-stage
     // (see globals.css) gives the tall part vertical room to fit uncropped — but
     // auto-fit also makes it render small, so we zoom back IN to fill the frame.
-    spline.setZoom(3.36);
+    spline.setZoom(4.6);
 
     // Lock the model to a fixed size/position: drag-to-rotate only,
     // no scroll-zoom (size change) and no panning. enableZoom=false is the

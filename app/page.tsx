@@ -114,7 +114,7 @@ export default function Home() {
         <div className="wrap pad">
           <div className="hero-grid">
             <div>
-              <h1 style={{ fontSize: "clamp(28px, 3.8vw, 42px)" }}>
+              <h1 style={{ fontSize: "clamp(32px, 4.4vw, 52px)" }}>
                 <span className="accentword">
                   Precision CNC &amp; Injection Molding.
                 </span>
