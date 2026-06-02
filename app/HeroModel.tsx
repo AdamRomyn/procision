@@ -10,9 +10,11 @@ export default function HeroModel() {
     // No background — let the page show through instead of a grey block.
     spline.setBackgroundColor("transparent");
 
-    // Zoom out from the scene's default framing so the whole model fits
-    // in the stage instead of being cropped at the edges. Tune 0.6–0.9 to taste.
-    spline.setZoom(0.7);
+    // Spline auto-fits the scene to the canvas on load, so a taller .spline-stage
+    // (see globals.css) gives the tall part vertical room to fit uncropped — but
+    // auto-fit also makes it render small, so we zoom back IN to fill the frame.
+    // 1.7 keeps the whole part in view with comfortable margins. Tune ~1.2–2.0.
+    spline.setZoom(1.7);
 
     // Lock the model to a fixed size/position: drag-to-rotate only,
     // no scroll-zoom (size change) and no panning (position change).
