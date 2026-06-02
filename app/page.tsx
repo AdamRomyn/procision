@@ -107,9 +107,8 @@ export default function Home() {
                 </span>
               </h1>
               <p className="lead">
-                A Western-owned precision manufacturer based in China —
-                engineer-to-engineer, from first article to full-rate
-                production.
+                A Western-owned precision manufacturer in China — engineer to
+                engineer, from first prototype to full production.
               </p>
               <div className="btns">
                 <a className="btn btn-primary" href="#start">
@@ -130,8 +129,8 @@ export default function Home() {
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                 </svg>
-                Founded &amp; run on the factory floor by engineers from the UK,
-                Denmark &amp; South Africa.
+                Run on the floor by engineers from the UK, Denmark &amp; South
+                Africa.
               </div>
               <div className="pills">
                 <span className="pill pill-light">

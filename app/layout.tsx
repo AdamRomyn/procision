@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title:
     "Procision — Precision manufacturing in China, Western engineering standards",
   description:
-    "A Western-owned precision manufacturer based in China — engineer-to-engineer, from first article to full-rate production.",
+    "A Western-owned precision manufacturer in China — engineer to engineer, from first prototype to full production.",
 };
 
 export default function RootLayout({
