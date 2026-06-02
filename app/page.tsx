@@ -168,10 +168,6 @@ export default function Home() {
                   Engineer-founders, on the floor in Shenzhen
                 </div>
               </div>
-              <div className="media-stat">
-                <div className="media-stat-num">±0.005<span>mm</span></div>
-                <div className="media-stat-label">Held tolerance, first article</div>
-              </div>
             </div>
           </div>
         </div>
