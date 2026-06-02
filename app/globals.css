@@ -260,27 +260,25 @@ p {
 .media.tall {
   min-height: 420px;
 }
-
-/* ---- hero photo treatment (frame + overlays + floating stat) ---- */
+/* live 3D scene stage — transparent, object centered, no background */
 .hero-media {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hero-media .media.tall {
-  position: relative;
-  z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+.spline-stage {
+  width: 100%;
+  /* big stage: more canvas pixels = part renders physically larger on screen
+     (without re-cropping, since Spline auto-fits to the canvas).
+     Cap raised 920→1100 to give the 1.4× zoomed part vertical room (no clip). */
+  height: min(96vh, 1100px);
+  background: transparent;
 }
-/* offset outline frame behind the photo for architectural depth */
-.hero-media-frame {
-  position: absolute;
-  top: 22px;
-  right: -22px;
-  bottom: -22px;
-  left: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  z-index: 0;
-  pointer-events: none;
+.spline-stage canvas {
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
 }
 /* fine line grain overlay → less flat, technical feel */
 .media-grain {
@@ -401,6 +399,14 @@ p {
   background: rgba(255, 255, 255, 0.08);
   color: #e6e6e6;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+/* certificate label — no box, so it doesn't read as a button */
+.pill-bare {
+  background: transparent;
+  color: #cfcfcf;
+  border: 0;
+  padding: 0;
+  letter-spacing: 0.01em;
 }
 .pill-dot {
   width: 6px;
@@ -539,7 +545,7 @@ header.nav {
   display: flex;
   align-items: center;
   min-height: 100vh;
-  min-height: min(100svh, 940px);
+  min-height: min(100svh, 1100px);
   /* slide up behind the transparent sticky nav so the gradient shows through */
   margin-top: -72px;
   padding-top: 72px;
@@ -565,7 +571,9 @@ header.nav {
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  /* give the 3D model column more room so the part renders large
+     (widened 0.82/1.18 → 0.74/1.26 for the 1.4× part) */
+  grid-template-columns: 0.74fr 1.26fr;
   gap: 54px;
   align-items: center;
 }
@@ -586,6 +594,11 @@ header.nav {
   flex-wrap: wrap;
   margin-top: 30px;
 }
+.hero-rule {
+  margin: 26px 0 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
 .hero .founders {
   margin-top: 26px;
   color: #a3a3a3;
@@ -603,6 +616,7 @@ header.nav {
 }
 .hero .pills {
   margin-top: 18px;
+  gap: 10px 22px;
 }
 
 /* trust strip */
@@ -810,12 +824,8 @@ footer a:hover {
   .hero .lead {
     max-width: none;
   }
-  /* pull decorations in so nothing clips on a single-column hero */
-  .hero-media-frame {
-    right: -12px;
-    bottom: -12px;
-    top: 14px;
-    left: 14px;
+  .spline-stage {
+    height: 460px;
   }
   footer .grid {
     grid-template-columns: 1fr 1fr;

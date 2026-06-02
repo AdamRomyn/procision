@@ -1,3 +1,5 @@
+import HeroModel from "./HeroModel";
+
 const ArrowRight = () => (
   <svg
     viewBox="0 0 24 24"
@@ -113,10 +115,8 @@ export default function Home() {
           <div className="hero-grid">
             <div>
               <h1 style={{ fontSize: "clamp(28px, 3.8vw, 42px)" }}>
-                Western engineering standards.
-                <br />
                 <span className="accentword">
-                  China manufacturing economics.
+                  Precision CNC &amp; Injection Molding.
                 </span>
               </h1>
               <p className="lead">
@@ -133,6 +133,21 @@ export default function Home() {
                   Book a call
                 </a>
               </div>
+              <hr className="hero-rule" />
+              <div className="pills">
+                <span className="pill pill-bare">
+                  <span className="pill-dot"></span>ISO 9001
+                </span>
+                <span className="pill pill-bare">
+                  <span className="pill-dot"></span>ISO 13485
+                </span>
+                <span className="pill pill-bare">
+                  <span className="pill-dot"></span>Class 8 Cleanroom Molding
+                </span>
+                <span className="pill pill-bare">
+                  <span className="pill-dot"></span>AEO Certified
+                </span>
+              </div>
               <div className="founders">
                 <svg
                   viewBox="0 0 24 24"
@@ -144,7 +159,7 @@ export default function Home() {
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                 </svg>
                 Founders from the UK, Denmark &amp; South Africa — living in
-                China, on the floor with the team.
+                China.
               </div>
               <a
                 className="link"
@@ -154,45 +169,8 @@ export default function Home() {
                 Learn more about our team
                 <ArrowRight />
               </a>
-              <div className="pills">
-                <span className="pill pill-light">
-                  <span className="pill-dot"></span>ISO 9001
-                </span>
-                <span className="pill pill-light">
-                  <span className="pill-dot"></span>ISO 13485
-                </span>
-                <span className="pill pill-light">
-                  <span className="pill-dot"></span>Class 8 Cleanroom Molding
-                </span>
-                <span className="pill pill-light">
-                  <span className="pill-dot"></span>AEO Certified
-                </span>
-              </div>
             </div>
-            <div className="hero-media">
-              <span className="hero-media-frame" aria-hidden="true"></span>
-              <div className="media tall">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://www.procision-manufacturing.com/wp-content/uploads/2025/07/group1-scaled-e1753076549699.avif"
-                  alt="Procision founding engineers on the factory floor"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-                <span className="media-grain" aria-hidden="true"></span>
-                <span className="media-shade" aria-hidden="true"></span>
-                <span className="media-corner media-corner-tl" aria-hidden="true"></span>
-                <span className="media-corner media-corner-br" aria-hidden="true"></span>
-                <div className="media-caption">
-                  Engineer-founders, on the floor in Shenzhen
-                </div>
-              </div>
-            </div>
+            <HeroModel />
           </div>
         </div>
       </section>
