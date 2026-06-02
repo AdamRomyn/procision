@@ -129,9 +129,17 @@ export default function Home() {
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                 </svg>
-                Run on the floor by engineers from the UK, Denmark &amp; South
-                Africa.
+                We&apos;re just engineer-founders on the floor in Shenzhen — from
+                the UK, Denmark &amp; South Africa.
               </div>
+              <a
+                className="link"
+                href="#about"
+                style={{ marginTop: 12, fontSize: "13.5px" }}
+              >
+                Learn more about our team
+                <ArrowRight />
+              </a>
               <div className="pills">
                 <span className="pill pill-light">
                   <span className="pill-dot"></span>ISO 9001
