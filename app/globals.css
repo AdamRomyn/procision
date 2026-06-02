@@ -464,12 +464,12 @@ header.nav {
   margin-top: -72px;
   padding-top: 72px;
   background:
-    /* visible dot texture */
+    /* subtle dot texture — perceptible but not loud */
     radial-gradient(
-        rgba(255, 255, 255, 0.14) 1.3px,
-        transparent 1.8px
+        rgba(255, 255, 255, 0.08) 1px,
+        transparent 1.6px
       )
-      0 0 / 24px 24px,
+      0 0 / 26px 26px,
     radial-gradient(
       900px 500px at 80% -20%,
       rgba(255, 255, 255, 0.08),
