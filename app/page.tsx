@@ -164,9 +164,7 @@ export default function Home() {
             <div className="eyebrow">Industries &amp; case studies</div>
             <h2>You don&apos;t buy CNC machining. You buy a qualified part.</h2>
             <p className="lead">
-              One that ships to spec and scales without switching suppliers —
-              built for work where &quot;close enough&quot; isn&apos;t an
-              option.
+              One that ships to spec and scales without switching suppliers.
             </p>
           </div>
 
