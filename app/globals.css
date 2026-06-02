@@ -574,6 +574,9 @@ header.nav {
 }
 .hero > .wrap {
   width: 100%;
+  /* above-the-fold gets a wider container than the rest of the page so the hero
+     doesn't feel cramped */
+  max-width: 1300px;
 }
 .hero .pad {
   /* keep the wrap's 28px horizontal padding so hero content lines up with the
@@ -585,7 +588,7 @@ header.nav {
   /* left column needs breathing room so the copy isn't cramped above the fold;
      the model's on-screen size is driven by Spline zoom (HeroModel.tsx), not by
      this column width — so we can give text more room AND render the part larger. */
-  grid-template-columns: 0.92fr 1.08fr;
+  grid-template-columns: 1.08fr 1fr;
   gap: 48px;
   align-items: center;
 }
@@ -595,7 +598,7 @@ header.nav {
 }
 .hero .lead {
   color: #c9c9c9;
-  max-width: 540px;
+  max-width: 620px;
 }
 .hero .accentword {
   color: #ffffff;

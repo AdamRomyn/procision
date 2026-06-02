@@ -161,14 +161,6 @@ export default function Home() {
                 Founders from the UK, Denmark &amp; South Africa — living in
                 China.
               </div>
-              <a
-                className="link"
-                href="#about"
-                style={{ marginTop: 12, fontSize: "13.5px" }}
-              >
-                Learn more about our team
-                <ArrowRight />
-              </a>
             </div>
             <HeroModel />
           </div>
