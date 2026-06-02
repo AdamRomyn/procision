@@ -115,10 +115,8 @@ export default function Home() {
           <div className="hero-grid">
             <div>
               <h1 style={{ fontSize: "clamp(28px, 3.8vw, 42px)" }}>
-                Western engineering standards.
-                <br />
                 <span className="accentword">
-                  China manufacturing economics.
+                  Precision CNC &amp; Injection Molding.
                 </span>
               </h1>
               <p className="lead">
