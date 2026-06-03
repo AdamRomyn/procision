@@ -281,19 +281,33 @@ export default function Home() {
       <section className="pad team">
         <div className="wrap">
           <div className="team-grid">
-            {/* founders photo — swap placeholder for /founders.jpg when supplied */}
-            <figure className="team-photo">
-              <span className="media-code">THE FOUNDERS</span>
-              <div className="team-photo-ph" aria-label="Photo of the four founders">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-                <span>Founders photo</span>
+            {/* founders photo, framed + captioned so the section doesn't read plain */}
+            <div className="team-photo-wrap">
+              <figure className="team-photo">
+                <span className="media-code">THE FOUNDERS</span>
+                <img
+                  src="/founders.avif"
+                  alt="The four founders of Procision together at the factory in China"
+                  loading="lazy"
+                />
+                <div className="team-photo-cap">
+                  <span className="team-flag">UK · Denmark · South Africa</span>
+                  On the floor in China — engineer to engineer.
+                </div>
+              </figure>
+              {/* floating stat badge — visual interest + reinforces the numbers */}
+              <div className="team-badge">
+                <div>
+                  <strong>4</strong>
+                  <span>Founders</span>
+                </div>
+                <div className="team-badge-div" />
+                <div>
+                  <strong>120</strong>
+                  <span>Staff</span>
+                </div>
               </div>
-            </figure>
+            </div>
 
             <div className="team-copy">
               <div className="eyebrow">Meet the team</div>
