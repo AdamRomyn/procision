@@ -701,10 +701,12 @@ p {
   color: #fff;
   /* frosted glass: a faint neutral tint sits on top so the dominant effect is
      the backdrop-filter blur of the photo behind — a real blur, not a flat
-     coloured box. Keep the tint light so the blur reads through it. */
+     coloured box. Keep the tint light so the blur reads through it.
+     NOTE: backdrop-filter + -webkit-backdrop-filter are set inline on the
+     element in page.tsx. The Lightning CSS build (Turbopack/Tailwind) collapses
+     the prefixed + standard pair down to a single property here, so neither the
+     CSS rule nor browserslist can keep BOTH — inline styles bypass that. */
   background: rgba(18, 18, 18, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
