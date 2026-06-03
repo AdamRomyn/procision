@@ -179,7 +179,8 @@ export default function Home() {
           </div>
 
           <div className="grid g3">
-            <div className="card">
+            <a className="card icard" href="#">
+              <span className="card-no">01</span>
               <div className="iconwrap">
                 <svg viewBox="0 0 24 24">
                   <path d="M12 6v12M6 12h12" />
@@ -191,8 +192,13 @@ export default function Home() {
                 ISO 13485 + Class 8 cleanroom. Implants, surgical instruments
                 and diagnostics — with the documentation QA needs to sign off.
               </p>
-            </div>
-            <div className="card">
+              <span className="card-go">
+                Explore
+                <ArrowRight />
+              </span>
+            </a>
+            <a className="card icard" href="#">
+              <span className="card-no">02</span>
               <div className="iconwrap">
                 <svg viewBox="0 0 24 24">
                   <path d="M22 2 11 13" />
@@ -204,8 +210,13 @@ export default function Home() {
                 Certified precision for Tier 2/3 suppliers. Tight tolerances,
                 full traceability and multi-year program reliability.
               </p>
-            </div>
-            <div className="card">
+              <span className="card-go">
+                Explore
+                <ArrowRight />
+              </span>
+            </a>
+            <a className="card icard" href="#">
+              <span className="card-no">03</span>
               <div className="iconwrap">
                 <svg viewBox="0 0 24 24">
                   <line x1="4" y1="8" x2="20" y2="8" />
@@ -219,8 +230,13 @@ export default function Home() {
                 Robotics and automation components that repeat cleanly as your
                 product lines scale.
               </p>
-            </div>
-            <div className="card">
+              <span className="card-go">
+                Explore
+                <ArrowRight />
+              </span>
+            </a>
+            <a className="card icard" href="#">
+              <span className="card-no">04</span>
               <div className="iconwrap">
                 <svg viewBox="0 0 24 24">
                   <rect x="7" y="7" width="10" height="10" rx="1" />
@@ -232,8 +248,13 @@ export default function Home() {
                 Ultra-tight tolerances and surface finishes for high-value
                 precision components.
               </p>
-            </div>
-            <div className="card">
+              <span className="card-go">
+                Explore
+                <ArrowRight />
+              </span>
+            </a>
+            <a className="card icard" href="#">
+              <span className="card-no">05</span>
               <div className="iconwrap">
                 <svg viewBox="0 0 24 24">
                   <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />
@@ -244,17 +265,13 @@ export default function Home() {
                 Battery housings, motor components and thermal management —
                 built for volume ramp.
               </p>
-            </div>
-            <div
-              className="card"
-              style={{
-                background: "var(--tint)",
-                borderStyle: "dashed",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
+              <span className="card-go">
+                Explore
+                <ArrowRight />
+              </span>
+            </a>
+            <div className="card card-invite">
+              <span className="card-plus">+</span>
               <h3>Don&apos;t see yours?</h3>
               <p style={{ marginBottom: 16 }}>
                 If your parts demand precision and tight tolerances, we should
@@ -271,42 +288,80 @@ export default function Home() {
             <span>Case studies — real parts, real outcomes</span>
           </div>
           <div className="grid g3">
-            <div className="card">
+            <div className="card cscard">
               <div className="media card-media">
+                <span className="media-tag">Medical Devices</span>
+                <span className="media-code">PRT-0418</span>
                 <div className="ph">IMAGE: the finished part</div>
               </div>
               <h3>Medical device OEM</h3>
               <p style={{ fontStyle: "italic" }}>
-                Challenge → what we did → result (scrap rate, lead time, cost,
-                batches shipped). Real numbers needed.
+                Challenge → what we did → result. Real numbers needed.
               </p>
-              <a className="link" href="#" style={{ marginTop: 14 }}>
+              <div className="kpis">
+                <span className="kpi">
+                  <em>Scrap rate</em>
+                </span>
+                <span className="kpi">
+                  <em>Lead time</em>
+                </span>
+                <span className="kpi">
+                  <em>Batches shipped</em>
+                </span>
+              </div>
+              <a className="link" href="#" style={{ marginTop: 16 }}>
                 Read case study
                 <ArrowRight />
               </a>
             </div>
-            <div className="card">
+            <div className="card cscard">
               <div className="media card-media">
+                <span className="media-tag">Aerospace &amp; Defence</span>
+                <span className="media-code">PRT-0732</span>
                 <div className="ph">IMAGE: the finished part</div>
               </div>
               <h3>Aerospace supplier</h3>
               <p style={{ fontStyle: "italic" }}>
                 Challenge → what we did → result. Real numbers needed.
               </p>
-              <a className="link" href="#" style={{ marginTop: 14 }}>
+              <div className="kpis">
+                <span className="kpi">
+                  <em>Tolerance held</em>
+                </span>
+                <span className="kpi">
+                  <em>On-time rate</em>
+                </span>
+                <span className="kpi">
+                  <em>Cost / part</em>
+                </span>
+              </div>
+              <a className="link" href="#" style={{ marginTop: 16 }}>
                 Read case study
                 <ArrowRight />
               </a>
             </div>
-            <div className="card">
+            <div className="card cscard">
               <div className="media card-media">
+                <span className="media-tag">Supplier switch</span>
+                <span className="media-code">PRT-1095</span>
                 <div className="ph">IMAGE: the finished part</div>
               </div>
               <h3>Switched from another supplier</h3>
               <p style={{ fontStyle: "italic" }}>
                 Challenge → what we did → result. Real numbers needed.
               </p>
-              <a className="link" href="#" style={{ marginTop: 14 }}>
+              <div className="kpis">
+                <span className="kpi">
+                  <em>Cost saved</em>
+                </span>
+                <span className="kpi">
+                  <em>Lead time</em>
+                </span>
+                <span className="kpi">
+                  <em>Re-qual time</em>
+                </span>
+              </div>
+              <a className="link" href="#" style={{ marginTop: 16 }}>
                 Read case study
                 <ArrowRight />
               </a>

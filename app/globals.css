@@ -237,6 +237,180 @@ p {
   stroke-linejoin: round;
 }
 
+/* ---- industry cards (clickable spec-sheet style) ---- */
+.icard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+/* thin accent bar that wipes across the top on hover */
+.icard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.icard:hover::before {
+  transform: scaleX(1);
+}
+.icard .iconwrap {
+  transition: background 0.18s ease, color 0.18s ease;
+}
+/* icon chip inverts to solid black on hover */
+.icard:hover .iconwrap {
+  background: var(--accent);
+  color: #fff;
+}
+/* monospace index number, top-right — parts-catalog feel */
+.card-no {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #c8c8c8;
+  transition: color 0.18s ease;
+}
+.icard:hover .card-no {
+  color: var(--accent);
+}
+/* "Explore →" cue, pushed to the bottom, revealed on hover */
+.card-go {
+  margin-top: auto;
+  padding-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, gap 0.15s ease;
+}
+.icard:hover .card-go {
+  opacity: 1;
+  transform: translateY(0);
+  gap: 10px;
+}
+.card-go svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+/* "Don't see yours?" invite card */
+.card-invite {
+  position: relative;
+  background: var(--tint);
+  border-style: dashed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-plus {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
+  color: #cfcfcf;
+}
+
+/* ---- case study cards ---- */
+.cscard {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.cscard .card-media {
+  overflow: hidden;
+}
+.cscard .ph {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cscard:hover .ph {
+  transform: scale(1.05);
+}
+/* faint technical grid over the part image area */
+.cscard .card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+/* category tag, top-left over the media */
+.media-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  padding: 4px 9px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--accent);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/* part code, top-right over the media — monospace */
+.media-code {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.7);
+}
+/* KPI / outcome chips — placeholder metric slots */
+.kpis {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.kpi {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 6px;
+  border: 1px solid var(--line);
+  text-align: center;
+  background: var(--tint);
+}
+.kpi em {
+  display: block;
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.cscard .link {
+  margin-top: auto;
+}
+
 /* media placeholder (where a real photo goes) */
 .media {
   border-radius: var(--r);

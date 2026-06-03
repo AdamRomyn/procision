@@ -36,47 +36,65 @@ export default function HeroModel() {
     // centered no matter the angle. We lean on that for the idle auto-rotate
     // below — orbiting the camera can't scatter or deform the model the way
     // spinning individual mesh objects would.
+    //
+    // NOTE: spline.controls is Spline's WRAPPER, not the raw OrbitControls. The
+    // wrapper's `autoRotate` flag does nothing in renderMode 'auto' (verified at
+    // runtime, iter041) because Spline never ticks it. The actual OrbitControls
+    // lives at controls.orbitControls and is what we drive by hand below.
     const controls = spline.controls;
     if (controls) {
       controls.enableRotate = true;
       controls.enableZoom = false;
       controls.enablePan = false;
-
-      // Steady, slow azimuth spin. autoRotate only fires while idle
-      // (state === -1), so it politely pauses whenever you grab the model.
-      // Speed is in OrbitControls units: angle/frame = 2π/3600 * speed,
-      // so ~1.2 ≈ one full turn every ~50s — a gentle drift, not a whirl.
-      controls.autoRotate = true;
-      controls.autoRotateClockwise = true;
-      controls.autoRotateSpeed = 1.2;
     }
 
     startAutoRotate(spline);
   }
 
-  // Idle tumble: the steady Y spin comes from controls.autoRotate (above);
-  // here we add a slow polar (up/down) wobble so the model appears to rotate
-  // along more than one axis instead of spinning flat like a turntable. The
-  // wobble is a sine wave, so phi returns to where it started each cycle and
-  // never drifts toward the poles. We also requestRender() every frame: if the
-  // scene is otherwise static, that's what keeps the runtime's loop alive so
-  // autoRotate actually advances.
+  // Idle spin — driven entirely by hand. Spline's renderMode is 'auto', so it
+  // will NOT tick OrbitControls.autoRotate on its own (the camera just sits
+  // still — that was the "no rotation" bug). We run our own rAF loop instead.
+  //
+  // CLOSED-LOOP, TIME-BASED control: Spline's OrbitControls is customised
+  // (damping + a rotationRangeFactor that scales rotateLeft by an unknown gain),
+  // so feeding a fixed per-frame delta gives an unpredictable, fps-dependent
+  // speed. Instead we compute the *target* azimuth from elapsed wall-clock time
+  // (RATE rad/s) and nudge the camera toward it each frame with a proportional
+  // gain. Result: the same real-world speed regardless of frame rate or Spline's
+  // internal gain. We talk to controls.orbitControls (the real OrbitControls) —
+  // only the inner object exposes rotateLeft / update / the live spherical.
   function startAutoRotate(spline: Application) {
-    const controls = spline.controls;
-    if (!controls?.rotateUp) return;
+    const oc = spline.controls?.orbitControls;
+    if (
+      !oc ||
+      typeof oc.rotateLeft !== "function" ||
+      typeof oc.update !== "function" ||
+      !oc.spherical
+    )
+      return;
 
-    const PHI_AMP = 0.22; // ~13° of tilt sway — subtle
-    const PHI_FREQ = 0.0085; // radians of wave phase per frame (slow)
-    let frame = 0;
-    let prevTarget = 0;
+    oc.autoRotate = false; // we drive it ourselves; don't let update() compound
 
-    const tick = () => {
-      frame += 1;
-      const target = PHI_AMP * Math.sin(frame * PHI_FREQ);
-      // rotateUp(e) does sphericalDelta.phi -= e, so negate to follow `target`.
-      controls.rotateUp(-(target - prevTarget));
-      prevTarget = target;
-      spline.requestRender?.();
+    const RATE = 0.26; // rad/s → one full revolution every ~24s (gentle)
+    const GAIN = 0.18; // P-correction per frame; low enough to stay stable
+    // Keep error in [-π, π] so wrapping past ±π doesn't cause a huge jump.
+    const wrap = (d: number) => Math.atan2(Math.sin(d), Math.cos(d));
+
+    let startTheta = 0;
+    let startTime = 0;
+    const tick = (now: number) => {
+      if (!startTime) {
+        startTime = now;
+        startTheta = oc.spherical.theta;
+      }
+      const elapsed = (now - startTime) / 1000;
+      const targetTheta = startTheta - RATE * elapsed; // clockwise drift
+      const err = wrap(targetTheta - oc.spherical.theta);
+      // rotateLeft(a) DECREASES spherical.theta, so move toward the target by
+      // feeding the negated error (verified at runtime, iter041).
+      oc.rotateLeft(-err * GAIN); // nudge azimuth toward the target
+      oc.update(); // apply to the camera
+      spline.requestRender?.(); // draw it
       autoRotateRaf.current = requestAnimationFrame(tick);
     };
     autoRotateRaf.current = requestAnimationFrame(tick);
