@@ -949,6 +949,14 @@ header.nav {
   z-index: 50;
   background: transparent;
   border-bottom: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+/* once scrolled past ~half the hero, the nav gets a translucent tint + border so
+   the blurred backdrop reads (backdrop-filter itself is set inline in Nav.tsx —
+   the build's Lightning CSS strips one of the -webkit-/standard prefix pair) */
+header.nav.scrolled {
+  background: rgba(16, 16, 16, 0.72);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 .navbar {
   display: flex;
