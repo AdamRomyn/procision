@@ -1,4 +1,5 @@
 import HeroModel from "./HeroModel";
+import ServicesTabs from "./ServicesTabs";
 
 const ArrowRight = () => (
   <svg
@@ -319,122 +320,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ INDUSTRIES ============ */}
+      {/* ============ MANUFACTURING SERVICES ============ */}
       <section className="pad">
         <div className="wrap">
           <div className="sectionhead center">
-            <div className="eyebrow">Industries</div>
-            <h2>You don&apos;t buy CNC machining. You buy a qualified part.</h2>
+            <div className="eyebrow">Capabilities</div>
+            <h2>Our manufacturing services</h2>
             <p className="lead">
-              One that ships to spec and scales without switching suppliers.
+              One supplier, one quality system — from first prototype to
+              full-rate production.
             </p>
           </div>
 
-          <div className="grid g3">
-            <a className="card icard" href="#">
-              <span className="card-no">01</span>
-              <div className="iconwrap">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 6v12M6 12h12" />
-                  <rect x="3" y="3" width="18" height="18" rx="4" />
-                </svg>
-              </div>
-              <h3>Medical Devices</h3>
-              <p>
-                ISO 13485 + Class 8 cleanroom. Implants, surgical instruments
-                and diagnostics — with the documentation QA needs to sign off.
-              </p>
-              <span className="card-go">
-                Explore
-                <ArrowRight />
-              </span>
-            </a>
-            <a className="card icard" href="#">
-              <span className="card-no">02</span>
-              <div className="iconwrap">
-                <svg viewBox="0 0 24 24">
-                  <path d="M22 2 11 13" />
-                  <path d="M22 2 15 22l-4-9-9-4 20-7z" />
-                </svg>
-              </div>
-              <h3>Aerospace &amp; Defence</h3>
-              <p>
-                Certified precision for Tier 2/3 suppliers. Tight tolerances,
-                full traceability and multi-year program reliability.
-              </p>
-              <span className="card-go">
-                Explore
-                <ArrowRight />
-              </span>
-            </a>
-            <a className="card icard" href="#">
-              <span className="card-no">03</span>
-              <div className="iconwrap">
-                <svg viewBox="0 0 24 24">
-                  <line x1="4" y1="8" x2="20" y2="8" />
-                  <circle cx="9" cy="8" r="2" />
-                  <line x1="4" y1="16" x2="20" y2="16" />
-                  <circle cx="15" cy="16" r="2" />
-                </svg>
-              </div>
-              <h3>Industrial Automation</h3>
-              <p>
-                Robotics and automation components that repeat cleanly as your
-                product lines scale.
-              </p>
-              <span className="card-go">
-                Explore
-                <ArrowRight />
-              </span>
-            </a>
-            <a className="card icard" href="#">
-              <span className="card-no">04</span>
-              <div className="iconwrap">
-                <svg viewBox="0 0 24 24">
-                  <rect x="7" y="7" width="10" height="10" rx="1" />
-                  <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
-                </svg>
-              </div>
-              <h3>Semiconductor Equipment</h3>
-              <p>
-                Ultra-tight tolerances and surface finishes for high-value
-                precision components.
-              </p>
-              <span className="card-go">
-                Explore
-                <ArrowRight />
-              </span>
-            </a>
-            <a className="card icard" href="#">
-              <span className="card-no">05</span>
-              <div className="iconwrap">
-                <svg viewBox="0 0 24 24">
-                  <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />
-                </svg>
-              </div>
-              <h3>EV &amp; Clean Energy</h3>
-              <p>
-                Battery housings, motor components and thermal management —
-                built for volume ramp.
-              </p>
-              <span className="card-go">
-                Explore
-                <ArrowRight />
-              </span>
-            </a>
-            <div className="card card-invite">
-              <span className="card-plus">+</span>
-              <h3>Don&apos;t see yours?</h3>
-              <p style={{ marginBottom: 16 }}>
-                If your parts demand precision and tight tolerances, we should
-                talk.
-              </p>
-              <a className="link" href="#start">
-                Start a conversation
-                <ArrowRight />
-              </a>
-            </div>
-          </div>
+          <ServicesTabs />
         </div>
       </section>
 
