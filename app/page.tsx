@@ -277,7 +277,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ CASE STUDIES (massive images, above industries) ============ */}
+      {/* ============ MANUFACTURING SERVICES ============ */}
+      <section className="pad">
+        <div className="wrap">
+          <div className="sectionhead center">
+            <div className="eyebrow">Capabilities</div>
+            <h2>Our manufacturing services</h2>
+            <p className="lead">
+              One supplier, one quality system — from first prototype to
+              full-rate production.
+            </p>
+          </div>
+
+          <ServicesTabs />
+        </div>
+      </section>
+
+      {/* ============ CASE STUDIES (massive images) ============ */}
       <section className="pad csfeature">
         <div className="wrap">
           <div className="sectionhead center">
@@ -322,22 +338,6 @@ export default function Home() {
               View all case studies
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* ============ MANUFACTURING SERVICES ============ */}
-      <section className="pad">
-        <div className="wrap">
-          <div className="sectionhead center">
-            <div className="eyebrow">Capabilities</div>
-            <h2>Our manufacturing services</h2>
-            <p className="lead">
-              One supplier, one quality system — from first prototype to
-              full-rate production.
-            </p>
-          </div>
-
-          <ServicesTabs />
         </div>
       </section>
 
