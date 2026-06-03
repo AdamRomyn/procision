@@ -474,11 +474,12 @@ export default function Home() {
 
       {/* ============ FAQ ============ */}
       <section className="pad">
-        <div className="wrap narrow">
+        <div className="wrap">
           <div className="sectionhead center">
             <div className="eyebrow">FAQ</div>
             <h2>Frequently asked questions</h2>
           </div>
+          <div className="faqgrid">
           <details className="acc">
             <summary>
               Are you audit-ready?<span className="pm">+</span>
@@ -583,6 +584,7 @@ export default function Home() {
               risks and how we&apos;d make it — with no obligation.
             </p>
           </details>
+          </div>
         </div>
       </section>
 

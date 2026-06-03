@@ -894,11 +894,22 @@ header.nav {
 }
 
 /* FAQ accordion */
+.faqgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .faqgrid {
+    grid-template-columns: 1fr;
+  }
+}
 .acc {
   border: 1px solid var(--line);
   border-radius: var(--rs);
   background: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 0;
   box-shadow: 0 1px 2px rgba(10, 23, 51, 0.04);
   overflow: hidden;
   transition: border-color 0.15s;
