@@ -331,6 +331,144 @@ p {
   color: #cfcfcf;
 }
 
+/* ---- manufacturing services (tabbed) ---- */
+.svc {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+/* tab bar — centered, underline marks the active service */
+.svc-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+.svc-tab {
+  appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--mute);
+  padding: 14px 8px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.svc-tab:hover {
+  color: var(--ink);
+}
+.svc-tab.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+/* three columns: intro · checklist · media */
+.svc-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.05fr;
+  gap: 40px;
+  align-items: start;
+}
+.svc-intro h3 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.svc-intro p {
+  color: var(--mute);
+  font-size: 15.5px;
+  margin-bottom: 24px;
+}
+.svc-points {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+.svc-points li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.svc-check {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svc-check svg {
+  width: 13px;
+  height: 13px;
+}
+/* placeholder media — monochrome, engineering-drawing treatment */
+.svc-media {
+  position: relative;
+  min-height: 300px;
+  height: 100%;
+  border: 1px solid var(--line);
+  background: linear-gradient(150deg, #161616, #343434);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.svc-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.svc-media-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  backdrop-filter: blur(2px);
+}
+.svc-media-icon svg {
+  width: 36px;
+  height: 36px;
+}
+.svc-caption {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+@media (max-width: 860px) {
+  .svc-panel {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .svc-media {
+    min-height: 260px;
+  }
+}
+
 /* ---- case study cards ---- */
 .cscard {
   display: flex;
