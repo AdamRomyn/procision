@@ -44,6 +44,11 @@ const LOGOS = [
   "APEX DYNAMICS",
 ];
 
+/* one marquee group must be wider than any viewport for the -50% loop to be
+   seamless (otherwise the track exposes white space before it wraps), so repeat
+   the list enough to comfortably exceed ultra-wide screens */
+const MARQUEE_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS];
+
 /* simple geometric marks so each placeholder reads as a logo */
 const LogoMark = ({ variant }: { variant: number }) => {
   const marks = [
@@ -258,13 +263,13 @@ export default function Home() {
         <div className="marquee" aria-hidden="true">
           <div className="marquee-track">
             <div className="marquee-group">
-              {LOGOS.map((name, i) => (
-                <DummyLogo key={`a-${i}`} name={name} variant={i} />
+              {MARQUEE_LOGOS.map((name, i) => (
+                <DummyLogo key={`a-${i}`} name={name} variant={i % LOGOS.length} />
               ))}
             </div>
             <div className="marquee-group">
-              {LOGOS.map((name, i) => (
-                <DummyLogo key={`b-${i}`} name={name} variant={i} />
+              {MARQUEE_LOGOS.map((name, i) => (
+                <DummyLogo key={`b-${i}`} name={name} variant={i % LOGOS.length} />
               ))}
             </div>
           </div>
