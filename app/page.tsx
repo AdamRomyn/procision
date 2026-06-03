@@ -277,6 +277,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ MEET THE TEAM (just below fold) ============ */}
+      <section className="pad team">
+        <div className="wrap">
+          <div className="team-grid">
+            {/* founders photo — swap placeholder for /founders.jpg when supplied */}
+            <figure className="team-photo">
+              <span className="media-code">THE FOUNDERS</span>
+              <div className="team-photo-ph" aria-label="Photo of the four founders">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <span>Founders photo</span>
+              </div>
+            </figure>
+
+            <div className="team-copy">
+              <div className="eyebrow">Meet the team</div>
+              <h2>We are a world-class manufacturing team.</h2>
+              <p className="lead">
+                Four Western founders living in China, and 120 staff across every
+                discipline — all passionate about making the best parts for the
+                best products in the world.
+              </p>
+
+              <ul className="team-trust">
+                <li>
+                  <Check />
+                  Western-owned &amp; personally accountable
+                </li>
+                <li>
+                  <Check />
+                  Engineer-to-engineer, owners on the floor
+                </li>
+                <li>
+                  <Check />
+                  ISO 9001 &amp; ISO 13485 certified
+                </li>
+              </ul>
+
+              <div className="btns">
+                <a className="btn btn-primary" href="#">
+                  Learn more
+                  <ArrowRight />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ MANUFACTURING SERVICES ============ */}
       <section className="pad">
         <div className="wrap">
