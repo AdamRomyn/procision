@@ -702,8 +702,8 @@ p {
      the backdrop-filter blur of the photo behind — a real blur, not a flat
      coloured box. Keep the tint light so the blur reads through it. */
   background: rgba(18, 18, 18, 0.18);
-  backdrop-filter: blur(24px) saturate(125%) brightness(0.62);
-  -webkit-backdrop-filter: blur(24px) saturate(125%) brightness(0.62);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
