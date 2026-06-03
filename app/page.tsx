@@ -32,6 +32,71 @@ const Check = () => (
   </svg>
 );
 
+/* dummy client wordmarks for the grayscale scroller (placeholder) */
+const LOGOS = [
+  "NORTHWIND",
+  "AXIOM",
+  "VERTEX",
+  "MERIDIAN",
+  "CALIBRE",
+  "HELIOS",
+  "FORGEWORKS",
+  "APEX DYNAMICS",
+];
+
+/* simple geometric marks so each placeholder reads as a logo */
+const LogoMark = ({ variant }: { variant: number }) => {
+  const marks = [
+    <path key="0" d="M12 2 2 22h20L12 2z" />,
+    <circle key="1" cx="12" cy="12" r="9" />,
+    <rect key="2" x="3" y="3" width="18" height="18" rx="2" />,
+    <path key="3" d="M12 2v20M2 12h20" />,
+  ];
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      {marks[variant % marks.length]}
+    </svg>
+  );
+};
+
+const DummyLogo = ({ name, variant }: { name: string; variant: number }) => (
+  <span className="dummylogo">
+    <LogoMark variant={variant} />
+    {name}
+  </span>
+);
+
+/* case studies — placeholder copy, real images/numbers to come */
+const CASES = [
+  {
+    code: "PRT-0418",
+    tag: "Medical Devices",
+    title: "Medical device OEM",
+    image: "finished implant component, full bleed",
+    blurb:
+      "Challenge → what we did → result. ISO 13485, Class 8 cleanroom moulding, full traceability.",
+    kpis: ["Scrap rate", "Lead time", "Batches shipped"],
+  },
+  {
+    code: "PRT-0732",
+    tag: "Aerospace & Defence",
+    title: "Aerospace supplier",
+    image: "machined titanium bracket, full bleed",
+    blurb:
+      "Challenge → what we did → result. Tight tolerances held across a multi-year program.",
+    kpis: ["Tolerance held", "On-time rate", "Cost / part"],
+  },
+  {
+    code: "PRT-1095",
+    tag: "Supplier switch",
+    title: "Switched from another supplier",
+    image: "production run on the floor, full bleed",
+    blurb:
+      "Challenge → what we did → result. Re-qualified without starting from zero.",
+    kpis: ["Cost saved", "Lead time", "Re-qual time"],
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -167,11 +232,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ INDUSTRIES & CASE STUDIES ============ */}
+      {/* ============ LOGO SCROLLER (just below fold) ============ */}
+      <section className="logos">
+        <div className="wrap">
+          <p className="logos-label">
+            Trusted by engineering teams shipping precision parts
+          </p>
+        </div>
+        {/* seamless infinite marquee: two identical groups, track scrolls -50% */}
+        <div className="marquee" aria-hidden="true">
+          <div className="marquee-track">
+            <div className="marquee-group">
+              {LOGOS.map((name, i) => (
+                <DummyLogo key={`a-${i}`} name={name} variant={i} />
+              ))}
+            </div>
+            <div className="marquee-group">
+              {LOGOS.map((name, i) => (
+                <DummyLogo key={`b-${i}`} name={name} variant={i} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CASE STUDIES (massive images, above industries) ============ */}
+      <section className="pad csfeature">
+        <div className="wrap">
+          <div className="sectionhead center">
+            <div className="eyebrow">Case studies</div>
+            <h2>Real parts. Real outcomes.</h2>
+            <p className="lead">
+              Challenge → what we did → result. Real numbers, real programs.
+            </p>
+          </div>
+          <div className="csbig-stack">
+            {CASES.map((c, i) => (
+              <article className="csbig" key={i}>
+                <span className="media-code">{c.code}</span>
+                <div className="ph">IMAGE: {c.image}</div>
+                <div className="csbig-panel">
+                  <span className="csbig-tag">{c.tag}</span>
+                  <h3>{c.title}</h3>
+                  <p>{c.blurb}</p>
+                  <div className="kpis kpis-glass">
+                    {c.kpis.map((k) => (
+                      <span className="kpi" key={k}>
+                        <em>{k}</em>
+                      </span>
+                    ))}
+                  </div>
+                  <a className="link readmore" href="#">
+                    Read more
+                    <ArrowRight />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="center" style={{ marginTop: 48 }}>
+            <a className="btn btn-ghost" href="#">
+              View all case studies
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ INDUSTRIES ============ */}
       <section className="pad">
         <div className="wrap">
           <div className="sectionhead center">
-            <div className="eyebrow">Industries &amp; case studies</div>
+            <div className="eyebrow">Industries</div>
             <h2>You don&apos;t buy CNC machining. You buy a qualified part.</h2>
             <p className="lead">
               One that ships to spec and scales without switching suppliers.
@@ -282,95 +413,6 @@ export default function Home() {
                 <ArrowRight />
               </a>
             </div>
-          </div>
-
-          <div className="divider">
-            <span>Case studies — real parts, real outcomes</span>
-          </div>
-          <div className="grid g3">
-            <div className="card cscard">
-              <div className="media card-media">
-                <span className="media-tag">Medical Devices</span>
-                <span className="media-code">PRT-0418</span>
-                <div className="ph">IMAGE: the finished part</div>
-              </div>
-              <h3>Medical device OEM</h3>
-              <p style={{ fontStyle: "italic" }}>
-                Challenge → what we did → result. Real numbers needed.
-              </p>
-              <div className="kpis">
-                <span className="kpi">
-                  <em>Scrap rate</em>
-                </span>
-                <span className="kpi">
-                  <em>Lead time</em>
-                </span>
-                <span className="kpi">
-                  <em>Batches shipped</em>
-                </span>
-              </div>
-              <a className="link" href="#" style={{ marginTop: 16 }}>
-                Read case study
-                <ArrowRight />
-              </a>
-            </div>
-            <div className="card cscard">
-              <div className="media card-media">
-                <span className="media-tag">Aerospace &amp; Defence</span>
-                <span className="media-code">PRT-0732</span>
-                <div className="ph">IMAGE: the finished part</div>
-              </div>
-              <h3>Aerospace supplier</h3>
-              <p style={{ fontStyle: "italic" }}>
-                Challenge → what we did → result. Real numbers needed.
-              </p>
-              <div className="kpis">
-                <span className="kpi">
-                  <em>Tolerance held</em>
-                </span>
-                <span className="kpi">
-                  <em>On-time rate</em>
-                </span>
-                <span className="kpi">
-                  <em>Cost / part</em>
-                </span>
-              </div>
-              <a className="link" href="#" style={{ marginTop: 16 }}>
-                Read case study
-                <ArrowRight />
-              </a>
-            </div>
-            <div className="card cscard">
-              <div className="media card-media">
-                <span className="media-tag">Supplier switch</span>
-                <span className="media-code">PRT-1095</span>
-                <div className="ph">IMAGE: the finished part</div>
-              </div>
-              <h3>Switched from another supplier</h3>
-              <p style={{ fontStyle: "italic" }}>
-                Challenge → what we did → result. Real numbers needed.
-              </p>
-              <div className="kpis">
-                <span className="kpi">
-                  <em>Cost saved</em>
-                </span>
-                <span className="kpi">
-                  <em>Lead time</em>
-                </span>
-                <span className="kpi">
-                  <em>Re-qual time</em>
-                </span>
-              </div>
-              <a className="link" href="#" style={{ marginTop: 16 }}>
-                Read case study
-                <ArrowRight />
-              </a>
-            </div>
-          </div>
-          <div className="center" style={{ marginTop: 40 }}>
-            <a className="btn btn-ghost" href="#">
-              View all case studies
-            </a>
           </div>
         </div>
       </section>

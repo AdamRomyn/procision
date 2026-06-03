@@ -411,6 +411,201 @@ p {
   margin-top: auto;
 }
 
+/* ============ LOGO SCROLLER (grayscale, slow, infinite) ============ */
+.logos {
+  /* sits just below the fold; big whitespace beneath it before the next section */
+  padding: 64px 0 120px;
+  overflow: hidden;
+}
+.logos-label {
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 36px;
+}
+.marquee {
+  position: relative;
+  overflow: hidden;
+  /* fade both edges so logos dissolve into the white page */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  /* slow, seamless: track holds two identical groups, scrolls exactly one group */
+  animation: marquee 60s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 72px;
+  /* equal to inner gap so spacing across the loop seam stays uniform */
+  padding-right: 72px;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+.dummylogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  white-space: nowrap;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: #b5b5b5; /* grayscale, muted */
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition: color 0.18s ease, opacity 0.18s ease;
+}
+.dummylogo:hover {
+  color: #6b6b6b;
+  opacity: 1;
+}
+.dummylogo svg {
+  width: 26px;
+  height: 26px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+/* ============ CASE STUDY FEATURE (massive images, glass text) ============ */
+.csbig-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.csbig {
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  /* placeholder "image" until a real photo is dropped in */
+  background: linear-gradient(150deg, #161616, #343434);
+  box-shadow: var(--sh);
+  transition: box-shadow 0.25s ease;
+}
+.csbig:hover {
+  box-shadow: var(--sh-lg);
+}
+/* faint placeholder caption, centred behind the glass panel */
+.csbig > .ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.csbig:hover > .ph {
+  transform: scale(1.04);
+}
+/* alternate the glass panel left / right down the stack */
+.csbig:nth-child(even) {
+  justify-content: flex-end;
+}
+/* translucent glass card — text lives inside the image */
+.csbig-panel {
+  position: relative;
+  z-index: 4;
+  align-self: flex-end;
+  margin: 40px;
+  max-width: 460px;
+  padding: 30px 32px;
+  color: #fff;
+  background: rgba(18, 18, 18, 0.38);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+.csbig-tag {
+  display: inline-block;
+  padding: 5px 11px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.csbig-panel h3 {
+  color: #fff;
+  font-size: 25px;
+  margin: 14px 0 10px;
+}
+.csbig-panel p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 15px;
+}
+/* KPI chips restyled to read on the dark glass */
+.kpis-glass {
+  margin-top: 20px;
+}
+.kpis-glass .kpi {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.kpis-glass .kpi em {
+  color: rgba(255, 255, 255, 0.72);
+}
+.csbig-panel .readmore {
+  margin-top: 22px;
+  color: #fff;
+}
+.csbig-panel .readmore svg {
+  stroke: #fff;
+}
+@media (max-width: 860px) {
+  .csbig {
+    min-height: 460px;
+  }
+  .csbig-panel {
+    margin: 16px;
+    max-width: none;
+  }
+}
+
 /* media placeholder (where a real photo goes) */
 .media {
   border-radius: var(--r);
