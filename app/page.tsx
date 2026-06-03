@@ -314,7 +314,13 @@ export default function Home() {
                   loading="lazy"
                 />
                 <div className="csbig-shade" />
-                <div className="csbig-panel">
+                <div
+                  className="csbig-panel"
+                  style={{
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                  }}
+                >
                   <span className="csbig-tag">{c.tag}</span>
                   <h3>{c.title}</h3>
                   <p>{c.blurb}</p>
