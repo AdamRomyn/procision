@@ -521,23 +521,39 @@ p {
 .csbig:hover {
   box-shadow: var(--sh-lg);
 }
-/* faint placeholder caption, centred behind the glass panel */
-.csbig > .ph {
+/* full-bleed photo, grayscale to hold the monochrome look */
+.csbig-img {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 24px;
-  color: rgba(255, 255, 255, 0.42);
-  font-size: 13px;
-  font-style: italic;
-  letter-spacing: 0.02em;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.92);
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.csbig:hover > .ph {
+.csbig:hover .csbig-img {
   transform: scale(1.04);
+}
+/* dark gradient so the glass panel + code read on any photo */
+.csbig-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    100deg,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.32) 42%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+  pointer-events: none;
+}
+.csbig:nth-child(even) .csbig-shade {
+  background: linear-gradient(
+    260deg,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.32) 42%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
 }
 /* alternate the glass panel left / right down the stack */
 .csbig:nth-child(even) {

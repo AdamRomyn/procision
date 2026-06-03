@@ -66,13 +66,15 @@ const DummyLogo = ({ name, variant }: { name: string; variant: number }) => (
   </span>
 );
 
-/* case studies — placeholder copy, real images/numbers to come */
+/* case studies — placeholder copy + stock imagery (Unsplash, swap for real shots before prod) */
 const CASES = [
   {
     code: "PRT-0418",
     tag: "Medical Devices",
     title: "Medical device OEM",
-    image: "finished implant component, full bleed",
+    alt: "Operators in cleanroom suits on a sterile medical manufacturing floor",
+    image:
+      "https://images.unsplash.com/photo-1748002388689-c62b45d5c28b?auto=format&fit=crop&w=2000&q=80&fm=jpg",
     blurb:
       "Challenge → what we did → result. ISO 13485, Class 8 cleanroom moulding, full traceability.",
     kpis: ["Scrap rate", "Lead time", "Batches shipped"],
@@ -81,7 +83,9 @@ const CASES = [
     code: "PRT-0732",
     tag: "Aerospace & Defence",
     title: "Aerospace supplier",
-    image: "machined titanium bracket, full bleed",
+    alt: "Precision metal shaft being turned in a CNC lathe chuck",
+    image:
+      "https://images.unsplash.com/photo-1666618090858-fbcee636bd3e?auto=format&fit=crop&w=2000&q=80&fm=jpg",
     blurb:
       "Challenge → what we did → result. Tight tolerances held across a multi-year program.",
     kpis: ["Tolerance held", "On-time rate", "Cost / part"],
@@ -90,7 +94,9 @@ const CASES = [
     code: "PRT-1095",
     tag: "Supplier switch",
     title: "Switched from another supplier",
-    image: "production run on the floor, full bleed",
+    alt: "Close-up of a CNC machine cutting metal with coolant flowing",
+    image:
+      "https://images.unsplash.com/photo-1645754884968-a00b7ed62c43?auto=format&fit=crop&w=2000&q=80&fm=jpg",
     blurb:
       "Challenge → what we did → result. Re-qualified without starting from zero.",
     kpis: ["Cost saved", "Lead time", "Re-qual time"],
@@ -270,7 +276,13 @@ export default function Home() {
             {CASES.map((c, i) => (
               <article className="csbig" key={i}>
                 <span className="media-code">{c.code}</span>
-                <div className="ph">IMAGE: {c.image}</div>
+                <img
+                  className="csbig-img"
+                  src={c.image}
+                  alt={c.alt}
+                  loading="lazy"
+                />
+                <div className="csbig-shade" />
                 <div className="csbig-panel">
                   <span className="csbig-tag">{c.tag}</span>
                   <h3>{c.title}</h3>
