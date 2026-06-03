@@ -207,6 +207,73 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ MEET THE TEAM (just below fold) ============ */}
+      <section className="pad team">
+        <div className="wrap">
+          <div className="team-grid">
+            {/* founders photo, framed + captioned so the section doesn't read plain */}
+            <div className="team-photo-wrap">
+              <figure className="team-photo">
+                <span className="media-code">THE FOUNDERS</span>
+                <img
+                  src="/founders.avif"
+                  alt="The four founders of Procision together at the factory in China"
+                  loading="lazy"
+                />
+                <div className="team-photo-cap">
+                  <span className="team-flag">UK · Denmark · South Africa</span>
+                  On the floor in China — engineer to engineer.
+                </div>
+              </figure>
+              {/* floating stat badge — visual interest + reinforces the numbers */}
+              <div className="team-badge">
+                <div>
+                  <strong>4</strong>
+                  <span>Founders</span>
+                </div>
+                <div className="team-badge-div" />
+                <div>
+                  <strong>120</strong>
+                  <span>Staff</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="team-copy">
+              <div className="eyebrow">Meet the team</div>
+              <h2>We are a world-class manufacturing team.</h2>
+              <p className="lead">
+                Four Western founders living in China, and 120 staff across every
+                discipline — all passionate about making the best parts for the
+                best products in the world.
+              </p>
+
+              <ul className="team-trust">
+                <li>
+                  <Check />
+                  Western-owned &amp; personally accountable
+                </li>
+                <li>
+                  <Check />
+                  Engineer-to-engineer, owners on the floor
+                </li>
+                <li>
+                  <Check />
+                  ISO 9001 &amp; ISO 13485 certified
+                </li>
+              </ul>
+
+              <div className="btns">
+                <a className="btn btn-primary" href="#">
+                  Learn more
+                  <ArrowRight />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ MANUFACTURING SERVICES ============ */}
       <section className="pad">
         <div className="wrap">
