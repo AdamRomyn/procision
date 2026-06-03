@@ -232,6 +232,20 @@ export default function Home() {
                 Founders from the UK, Denmark &amp; South Africa — living in
                 China.
               </div>
+              <dl className="herostats">
+                <div className="herostat">
+                  <dd className="herostat-num">500</dd>
+                  <dt className="herostat-lbl">Customers</dt>
+                </div>
+                <div className="herostat">
+                  <dd className="herostat-num">65</dd>
+                  <dt className="herostat-lbl">Countries</dt>
+                </div>
+                <div className="herostat">
+                  <dd className="herostat-num">500M</dd>
+                  <dt className="herostat-lbl">Parts produced</dt>
+                </div>
+              </dl>
             </div>
             <HeroModel />
           </div>
@@ -240,11 +254,6 @@ export default function Home() {
 
       {/* ============ LOGO SCROLLER (just below fold) ============ */}
       <section className="logos">
-        <div className="wrap">
-          <p className="logos-label">
-            Trusted by engineering teams shipping precision parts
-          </p>
-        </div>
         {/* seamless infinite marquee: two identical groups, track scrolls -50% */}
         <div className="marquee" aria-hidden="true">
           <div className="marquee-track">
