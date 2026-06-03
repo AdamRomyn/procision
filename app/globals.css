@@ -951,12 +951,13 @@ header.nav {
   border-bottom: 1px solid transparent;
   transition: background 0.25s ease, border-color 0.25s ease;
 }
-/* once scrolled past ~half the hero, the nav goes glassy — no background fill,
-   just the blurred backdrop + a hairline border (backdrop-filter itself is set
-   inline in Nav.tsx — the build's Lightning CSS strips one of the
-   -webkit-/standard prefix pair) */
+/* once scrolled past ~half the hero, the nav goes glassy — a very subtle black
+   tint (so white nav text stays legible over white page sections) plus the
+   blurred backdrop + a hairline border (backdrop-filter itself is set inline in
+   Nav.tsx — the build's Lightning CSS strips one of the -webkit-/standard
+   prefix pair) */
 header.nav.scrolled {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.28);
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 .navbar {
