@@ -579,7 +579,7 @@ p {
   display: flex;
   width: max-content;
   /* slow, seamless: track holds two identical groups, scrolls exactly one group */
-  animation: marquee 60s linear infinite;
+  animation: marquee 120s linear infinite;
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
