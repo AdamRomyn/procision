@@ -223,7 +223,7 @@ export default function Home() {
               <ul className="team-trust">
                 <li>
                   <Check />
-                  Western Engineering Standards &amp; personally accountable
+                  Western Engineering Standards
                 </li>
                 <li>
                   <Check />
