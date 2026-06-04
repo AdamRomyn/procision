@@ -192,6 +192,10 @@ p {
 .sectionhead h2 {
   margin-bottom: 16px;
 }
+.sectionhead.left {
+  margin-left: 0;
+  text-align: left;
+}
 
 /* cards */
 .card {
@@ -336,11 +340,11 @@ p {
   max-width: 1040px;
   margin: 0 auto;
 }
-/* tab bar — centered, underline marks the active service */
+/* tab bar — left-aligned, underline marks the active service */
 .svc-tabs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px 12px;
   border-bottom: 1px solid var(--line);
   margin-bottom: 48px;
@@ -359,6 +363,9 @@ p {
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
   transition: color 0.15s ease, border-color 0.15s ease;
+}
+.svc-tab:first-child {
+  padding-left: 0;
 }
 .svc-tab:hover {
   color: var(--ink);
@@ -1446,7 +1453,6 @@ footer a:hover {
 /* ---- meet the team ---- */
 .team {
   padding: 84px 0;
-  border-bottom: 1px solid var(--line);
 }
 .team-grid {
   display: grid;
