@@ -1021,13 +1021,11 @@ header.nav.scrolled {
   left: 50%;
   top: calc(100% - 6px);
   transform: translateX(-50%) translateY(8px);
-  background: rgba(16, 16, 16, 0.92);
-  backdrop-filter: saturate(140%) blur(14px);
-  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  background: #101010;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
-  width: 900px;
+  width: 980px;
   padding: 0;
   opacity: 0;
   visibility: hidden;
@@ -1090,8 +1088,8 @@ header.nav.scrolled {
 .mega-groups {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px 18px;
-  padding: 26px;
+  gap: 22px 48px;
+  padding: 26px 34px;
 }
 .mega-group h4 {
   font-size: 11px;
