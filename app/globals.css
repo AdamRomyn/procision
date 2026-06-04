@@ -1020,8 +1020,8 @@ header.nav.scrolled {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
-  width: 760px;
-  padding: 26px;
+  width: 900px;
+  padding: 0;
   opacity: 0;
   visibility: hidden;
   transition: 0.18s;
@@ -1032,52 +1032,105 @@ header.nav.scrolled {
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
-.mega .cols {
+/* reference layout: left feature panel + right grouped item grid */
+.mega-inner {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  grid-template-columns: 248px 1fr;
 }
-.mega h4 {
-  font-size: 11.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 0 0 12px;
-}
-.mega a {
-  display: block;
-  color: rgba(255, 255, 255, 0.78);
-  text-decoration: none;
-  font-size: 14.5px;
-  font-weight: 500;
-  padding: 7px 0;
-  border-radius: 0;
-  transition: 0.12s;
-}
-.mega a:hover {
-  color: #ffffff;
-  padding-left: 6px;
-}
-.mega .promo {
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0;
-  padding: 16px;
-  font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.65);
+.mega-feature {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 26px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  gap: 14px;
+  gap: 22px;
 }
-/* white button reads on the dark mega panel */
-.mega .promo .btn-primary {
+/* oversized translucent wordmark watermark, like the "K12" in the reference */
+.mega-feature-mark {
+  position: absolute;
+  right: -10px;
+  bottom: -18px;
+  font-weight: 900;
+  font-size: 88px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+.mega-feature h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.mega-feature p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+.mega-feature .btn-primary {
+  align-self: flex-start;
   background: #fff;
   color: #0a0a0a;
 }
-.mega .promo .btn-primary:hover {
+.mega-feature .btn-primary:hover {
   background: #e6e6e6;
+}
+.mega-groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px 18px;
+  padding: 26px;
+}
+.mega-group h4 {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 0 10px;
+}
+.mega-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 6px 8px 6px 6px;
+  margin: 0 -8px;
+  border-radius: 0;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.mega-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+/* square icon box — the defining element of the reference layout */
+.mega-ico {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mega-ico svg {
+  width: 16px;
+  height: 16px;
+  stroke: rgba(255, 255, 255, 0.7);
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mega-item:hover .mega-ico svg {
+  stroke: #fff;
 }
 
 /* ============ HERO ============ */
