@@ -1456,9 +1456,12 @@ footer a:hover {
 }
 .team-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1.08fr;
+  grid-template-columns: 1.08fr 1.2fr;
   gap: 52px;
   align-items: center;
+}
+.team-copy {
+  text-align: left;
 }
 .team-photo-wrap {
   position: relative;
@@ -1467,7 +1470,7 @@ footer a:hover {
 .team-photo-wrap::before {
   content: "";
   position: absolute;
-  inset: 18px -18px -18px 18px;
+  inset: 18px 18px -18px -18px;
   border: 1px solid var(--ink);
   background: var(--accent-soft);
   z-index: 0;
@@ -1594,7 +1597,7 @@ footer a:hover {
   }
   /* pull in the offset frame + badge so nothing overflows on narrow screens */
   .team-photo-wrap::before {
-    inset: 12px -12px -12px 12px;
+    inset: 12px 12px -12px -12px;
   }
   .team-badge {
     left: 12px;

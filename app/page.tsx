@@ -211,33 +211,6 @@ export default function Home() {
       <section className="pad team">
         <div className="wrap">
           <div className="team-grid">
-            {/* founders photo, framed + captioned so the section doesn't read plain */}
-            <div className="team-photo-wrap">
-              <figure className="team-photo">
-                <span className="media-code">THE FOUNDERS</span>
-                <img
-                  src="/founders.avif"
-                  alt="The four founders of Procision together at the factory in China"
-                  loading="lazy"
-                />
-                <div className="team-photo-cap">
-                  <span className="team-flag">UK · Denmark · South Africa</span>
-                </div>
-              </figure>
-              {/* floating stat badge — visual interest + reinforces the numbers */}
-              <div className="team-badge">
-                <div>
-                  <strong>4</strong>
-                  <span>Founders</span>
-                </div>
-                <div className="team-badge-div" />
-                <div>
-                  <strong>120</strong>
-                  <span>Staff</span>
-                </div>
-              </div>
-            </div>
-
             <div className="team-copy">
               <div className="eyebrow">Meet the team</div>
               <h2>We are a world-class manufacturing team.</h2>
@@ -267,6 +240,33 @@ export default function Home() {
                   Learn more
                   <ArrowRight />
                 </a>
+              </div>
+            </div>
+
+            {/* founders photo, framed + captioned so the section doesn't read plain */}
+            <div className="team-photo-wrap">
+              <figure className="team-photo">
+                <span className="media-code">THE FOUNDERS</span>
+                <img
+                  src="/founders.avif"
+                  alt="The four founders of Procision together at the factory in China"
+                  loading="lazy"
+                />
+                <div className="team-photo-cap">
+                  <span className="team-flag">UK · Denmark · South Africa</span>
+                </div>
+              </figure>
+              {/* floating stat badge — visual interest + reinforces the numbers */}
+              <div className="team-badge">
+                <div>
+                  <strong>4</strong>
+                  <span>Founders</span>
+                </div>
+                <div className="team-badge-div" />
+                <div>
+                  <strong>120</strong>
+                  <span>Staff</span>
+                </div>
               </div>
             </div>
           </div>
