@@ -74,24 +74,19 @@ const IconMedical = () => (
     <path d="M2 12h4l2-5 3 11 2-6 1.5 0M16 12h6" />
   </svg>
 );
-const IconAerospace = () => (
+const IconConsumer = () => (
   <svg viewBox="0 0 24 24">
-    <path d="M21 3 3 11l6 2 2 6zM21 3 11 13" />
+    <path d="M6 8h12l-1 11H7L6 8zM9 8V6a3 3 0 0 1 6 0v2" />
   </svg>
 );
-const IconAutomation = () => (
-  <svg viewBox="0 0 24 24">
-    <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M19 5l-2 2M5 19l2-2" />
-  </svg>
-);
-const IconSemiconductor = () => (
+const IconElectronic = () => (
   <svg viewBox="0 0 24 24">
     <path d="M7 7h10v10H7zM9 9h6v6H9M9 2v2m6-2v2M9 20v2m6-2v2M2 9h2m-2 6h2m16-6h2m-2 6h2" />
   </svg>
 );
-const IconEnergy = () => (
+const IconAutomotive = () => (
   <svg viewBox="0 0 24 24">
-    <path d="M5 18c0-7 5-12 14-13-1 9-6 14-13 14zM9 14c1-3 3-5 6-7" />
+    <path d="M3 13l2-6h14l2 6v5h-3v-2H6v2H3v-5zM6 16h.01M18 16h.01" />
   </svg>
 );
 
@@ -248,31 +243,25 @@ export default function Nav() {
                       <span className="mega-ico">
                         <IconMedical />
                       </span>
-                      Medical Devices
+                      Medical Industry
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconAerospace />
+                        <IconConsumer />
                       </span>
-                      Aerospace &amp; Defence
+                      Consumer Products
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconAutomation />
+                        <IconElectronic />
                       </span>
-                      Industrial Automation
+                      Electronic Industry
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconSemiconductor />
+                        <IconAutomotive />
                       </span>
-                      Semiconductor
-                    </a>
-                    <a className="mega-item" href="#">
-                      <span className="mega-ico">
-                        <IconEnergy />
-                      </span>
-                      EV &amp; Clean Energy
+                      Automotive Industry
                     </a>
                   </div>
                 </div>
