@@ -222,7 +222,6 @@ export default function Home() {
                 />
                 <div className="team-photo-cap">
                   <span className="team-flag">UK · Denmark · South Africa</span>
-                  On the floor in China — engineer to engineer.
                 </div>
               </figure>
               {/* floating stat badge — visual interest + reinforces the numbers */}
