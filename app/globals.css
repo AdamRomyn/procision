@@ -794,10 +794,13 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* fill the full hero ("header") height so the tall part isn't cut off.
-     Matching the hero's own min-height makes the grid row this tall, which
-     also keeps the text column vertically centered against it. */
-  height: min(100svh, 1100px);
+  /* Stretch to the grid row (sized by the copy column) instead of forcing a
+     full-viewport height. Forcing 100svh here made the hero = 100svh + its own
+     ~208px of padding, so the fold overflowed the screen even when the copy fit
+     easily. Now the hero is exactly 100svh when content fits (min-height on
+     .hero) and only grows when the copy genuinely needs more. */
+  align-self: stretch;
+  min-height: 460px;
   /* scroll-driven scale (set in HeroModel.tsx) shrinks toward the centre */
   transform-origin: center center;
   will-change: transform, opacity;
