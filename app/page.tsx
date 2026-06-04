@@ -276,7 +276,7 @@ export default function Home() {
       {/* ============ MANUFACTURING SERVICES ============ */}
       <section className="pad">
         <div className="wrap">
-          <div className="sectionhead center">
+          <div className="sectionhead left">
             <div className="eyebrow">Capabilities</div>
             <h2>Our manufacturing services</h2>
             <p className="lead">
@@ -292,7 +292,7 @@ export default function Home() {
       {/* ============ CASE STUDIES (massive images) ============ */}
       <section className="pad csfeature">
         <div className="wrap">
-          <div className="sectionhead center">
+          <div className="sectionhead left">
             <div className="eyebrow">Case studies</div>
             <h2>Real parts. Real outcomes.</h2>
             <p className="lead">
