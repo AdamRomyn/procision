@@ -1360,6 +1360,7 @@ header.nav.scrolled {
   list-style: none;
   cursor: pointer;
   padding: 20px 22px;
+  min-height: 86px;
   font-weight: 700;
   font-size: 16.5px;
   display: flex;
