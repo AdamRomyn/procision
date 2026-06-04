@@ -2,20 +2,96 @@
 
 import { useEffect, useState } from "react";
 
-/* small outline glyphs for the mega-menu item boxes — one per group */
-const IconTool = () => (
+/* small outline glyphs for the mega-menu item boxes — one unique per item */
+
+// Capabilities
+const IconCnc = () => (
   <svg viewBox="0 0 24 24">
-    <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6z" />
+    <path d="M12 3v8m-3 0h6l-1.5 4h-3L9 11zM4 20h16" />
   </svg>
 );
-const IconLayers = () => (
+const IconMultiAxis = () => (
   <svg viewBox="0 0 24 24">
-    <path d="M12 3 3 8l9 5 9-5-9-5zM3 13l9 5 9-5M3 18l9 5 9-5" />
+    <path d="M19.5 8.5A8 8 0 1 0 20 13M20 3v6h-6" />
   </svg>
 );
-const IconIndustry = () => (
+const IconEdm = () => (
   <svg viewBox="0 0 24 24">
-    <path d="M3 21V9l6 3V9l6 3V6l6 3v12H3zM7 17h2M13 17h2M17 17h0" />
+    <path d="M13 3 5 13h5l-1 8 8-11h-5z" />
+  </svg>
+);
+const IconInjection = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M4 4v16M20 4v16M4 8h4v8H4M20 8h-4v8h4M8 12h8" />
+  </svg>
+);
+const IconCleanroom = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M12 3 5 6v6c0 4 3 6 7 9 4-3 7-5 7-9V6zM9 12l2 2 4-4" />
+  </svg>
+);
+const IconInspection = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM8 11l2 2 4-4M16 16l5 5" />
+  </svg>
+);
+const IconFinishing = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M12 2v5m0 10v5M2 12h5m10 0h5M5 5l3 3m8 8 3 3M5 19l3-3m8-8 3-3" />
+  </svg>
+);
+
+// By stage
+const IconPrototyping = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4" />
+  </svg>
+);
+const IconFirstArticle = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.5 6.8 19l1-5.8-4.3-4.1 5.9-.9z" />
+  </svg>
+);
+const IconLowVolume = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M4 8h7v7H4zM13 11h7v7h-7z" />
+  </svg>
+);
+const IconFullRate = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M3 21V10l6 4V10l6 4V6l6 4v11H3zM7 17h2m4 0h2" />
+  </svg>
+);
+const IconOptimise = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M4 17l5-5 3 3 7-7m0 0h-4m4 0v4" />
+  </svg>
+);
+
+// Industries
+const IconMedical = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M2 12h4l2-5 3 11 2-6 1.5 0M16 12h6" />
+  </svg>
+);
+const IconAerospace = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M21 3 3 11l6 2 2 6zM21 3 11 13" />
+  </svg>
+);
+const IconAutomation = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M19 5l-2 2M5 19l2-2" />
+  </svg>
+);
+const IconSemiconductor = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M7 7h10v10H7zM9 9h6v6H9M9 2v2m6-2v2M9 20v2m6-2v2M2 9h2m-2 6h2m16-6h2m-2 6h2" />
+  </svg>
+);
+const IconEnergy = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M5 18c0-7 5-12 14-13-1 9-6 14-13 14zM9 14c1-3 3-5 6-7" />
   </svg>
 );
 
@@ -92,43 +168,43 @@ export default function Nav() {
                     <h4>Capabilities</h4>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconTool />
+                        <IconCnc />
                       </span>
                       CNC machining
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconTool />
+                        <IconMultiAxis />
                       </span>
                       Multi-axis &amp; 5-axis
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconTool />
+                        <IconEdm />
                       </span>
                       EDM
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconTool />
+                        <IconInjection />
                       </span>
                       Injection moulding
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconTool />
+                        <IconCleanroom />
                       </span>
                       Cleanroom moulding
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconTool />
+                        <IconInspection />
                       </span>
                       Inspection &amp; validation
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconTool />
+                        <IconFinishing />
                       </span>
                       Finishing
                     </a>
@@ -137,31 +213,31 @@ export default function Nav() {
                     <h4>By stage</h4>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconLayers />
+                        <IconPrototyping />
                       </span>
                       Prototyping
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconLayers />
+                        <IconFirstArticle />
                       </span>
                       First article
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconLayers />
+                        <IconLowVolume />
                       </span>
                       Low / mid volume
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconLayers />
+                        <IconFullRate />
                       </span>
                       Full-rate production
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconLayers />
+                        <IconOptimise />
                       </span>
                       Optimise existing parts
                     </a>
@@ -170,31 +246,31 @@ export default function Nav() {
                     <h4>Industries</h4>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconIndustry />
+                        <IconMedical />
                       </span>
                       Medical Devices
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconIndustry />
+                        <IconAerospace />
                       </span>
                       Aerospace &amp; Defence
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconIndustry />
+                        <IconAutomation />
                       </span>
                       Industrial Automation
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconIndustry />
+                        <IconSemiconductor />
                       </span>
                       Semiconductor
                     </a>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
-                        <IconIndustry />
+                        <IconEnergy />
                       </span>
                       EV &amp; Clean Energy
                     </a>
