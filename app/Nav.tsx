@@ -90,8 +90,41 @@ const IconAutomotive = () => (
   </svg>
 );
 
+/* primary links + a compact capabilities list for the mobile menu */
+const MOBILE_PRIMARY = ["Services", "Case Studies", "About Us"];
+const MOBILE_CAPABILITIES = [
+  "CNC machining",
+  "Injection moulding",
+  "Cleanroom moulding",
+  "Inspection & validation",
+  "Optimise existing parts",
+];
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // lock body scroll while the mobile menu is open
+  useEffect(() => {
+    document.documentElement.classList.toggle("menu-open", menuOpen);
+    return () => document.documentElement.classList.remove("menu-open");
+  }, [menuOpen]);
+
+  // close the menu when the viewport grows back to desktop, or on Escape
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 860) setMenuOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
 
   useEffect(() => {
     // blur kicks in once we've scrolled past ~half the above-fold (hero) section
@@ -275,7 +308,51 @@ export default function Nav() {
             <span>About Us</span>
           </div>
         </nav>
-        <a className="btn btn-primary" href="#start">
+        <a className="btn btn-primary nav-cta" href="#start">
+          Request a DfM audit
+        </a>
+        <button
+          type="button"
+          className={`nav-burger${menuOpen ? " is-open" : ""}`}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setMenuOpen((o) => !o)}
+        >
+          <span className="nav-burger-box" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+        </button>
+      </div>
+
+      {/* mobile slide-down menu (≤860px) */}
+      <div
+        id="mobile-menu"
+        className={`mobile-menu${menuOpen ? " is-open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
+        <nav className="mobile-menu-primary">
+          {MOBILE_PRIMARY.map((label) => (
+            <a key={label} href="#" onClick={() => setMenuOpen(false)}>
+              {label}
+            </a>
+          ))}
+        </nav>
+        <div className="mobile-menu-group">
+          <h4>Capabilities</h4>
+          {MOBILE_CAPABILITIES.map((label) => (
+            <a key={label} href="#" onClick={() => setMenuOpen(false)}>
+              {label}
+            </a>
+          ))}
+        </div>
+        <a
+          className="btn btn-primary mobile-menu-cta"
+          href="#start"
+          onClick={() => setMenuOpen(false)}
+        >
           Request a DfM audit
         </a>
       </div>

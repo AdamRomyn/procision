@@ -1,6 +1,7 @@
 import HeroModel from "./HeroModel";
 import Nav from "./Nav";
 import ServicesTabs from "./ServicesTabs";
+import GetStarted from "./GetStarted";
 
 const ArrowRight = () => (
   <svg
@@ -83,8 +84,12 @@ const CASES = [
     image:
       "https://images.unsplash.com/photo-1748002388689-c62b45d5c28b?auto=format&fit=crop&w=2000&q=80&fm=jpg",
     blurb:
-      "Challenge → what we did → result. ISO 13485, Class 8 cleanroom moulding, full traceability.",
-    kpis: ["Scrap rate", "Lead time", "Batches shipped"],
+      "A medical OEM needed to scale a sterile-packaged housing from pilot to full production without losing lot traceability. We stood up Class 8 cleanroom moulding under ISO 13485 with automated CMM inspection on every run — cutting scrap and holding documentation audit-ready throughout.",
+    kpis: [
+      { v: "0.4%", k: "Scrap rate" },
+      { v: "12 days", k: "Lead time" },
+      { v: "240", k: "Batches shipped" },
+    ],
   },
   {
     code: "PRT-0732",
@@ -94,8 +99,12 @@ const CASES = [
     image:
       "https://images.unsplash.com/photo-1666618090858-fbcee636bd3e?auto=format&fit=crop&w=2000&q=80&fm=jpg",
     blurb:
-      "Challenge → what we did → result. Tight tolerances held across a multi-year program.",
-    kpis: ["Tolerance held", "On-time rate", "Cost / part"],
+      "An aerospace supplier needed flight-critical machined parts held to tight tolerances across a multi-year program. We locked first-article inspection and SPC into a repeatable 5-axis process, so every batch shipped to spec — on schedule and at a lower landed cost than the incumbent.",
+    kpis: [
+      { v: "±0.001\"", k: "Tolerance held" },
+      { v: "99.6%", k: "On-time rate" },
+      { v: "−18%", k: "Cost / part" },
+    ],
   },
   {
     code: "PRT-1095",
@@ -105,12 +114,22 @@ const CASES = [
     image:
       "https://images.unsplash.com/photo-1645754884968-a00b7ed62c43?auto=format&fit=crop&w=2000&q=80&fm=jpg",
     blurb:
-      "Challenge → what we did → result. Re-qualified without starting from zero.",
-    kpis: ["Cost saved", "Lead time", "Re-qual time"],
+      "A customer was stuck with a slow incumbent and needed to move suppliers without re-qualifying from scratch. We reverse-engineered the existing tooling, matched the validated process, and ran a side-by-side PPAP — so they switched with zero line-down risk and immediate savings.",
+    kpis: [
+      { v: "22%", k: "Cost saved" },
+      { v: "−50%", k: "Lead time" },
+      { v: "6 wks", k: "Re-qual time" },
+    ],
   },
 ];
 
 export default function Home() {
+  return <Landing variant={1} />;
+}
+
+/* Shared landing page. The "How to get started" section is swapped out per
+   variant (1–5) so /1 … /5 can A/B different designs of that block. */
+export function Landing({ variant = 1 }: { variant?: number }) {
   return (
     <>
       {/* ============ NAV ============ */}
@@ -313,17 +332,18 @@ export default function Home() {
                 <div
                   className="csbig-panel"
                   style={{
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
+                    backdropFilter: "blur(24px)",
+                    WebkitBackdropFilter: "blur(24px)",
                   }}
                 >
                   <span className="csbig-tag">{c.tag}</span>
                   <h3>{c.title}</h3>
                   <p>{c.blurb}</p>
                   <div className="kpis kpis-glass">
-                    {c.kpis.map((k) => (
-                      <span className="kpi" key={k}>
-                        <em>{k}</em>
+                    {c.kpis.map((kpi) => (
+                      <span className="kpi" key={kpi.k}>
+                        <strong>{kpi.v}</strong>
+                        <em>{kpi.k}</em>
                       </span>
                     ))}
                   </div>
@@ -343,102 +363,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ HOW TO GET STARTED ============ */}
-      <section
-        className="pad"
-        style={{
-          background: "var(--tint)",
-          borderTop: "1px solid var(--line)",
-          borderBottom: "1px solid var(--line)",
-        }}
-      >
-        <div className="wrap">
-          <div className="sectionhead center">
-            <div className="eyebrow">Get started</div>
-            <h2>How to get started.</h2>
-            <p className="lead">Two ways to work with us.</p>
-          </div>
-          <div className="grid g2">
-            <div className="pathcard">
-              <div className="iconwrap">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2 2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-                </svg>
-              </div>
-              <div className="eyebrow">New product</div>
-              <h3 style={{ margin: "10px 0" }}>Prototype → production</h3>
-              <p className="muted">
-                Got a design or an idea? We prototype it, prove it out together,
-                and scale the same part to thousands — on one quality system,
-                without re-sourcing.
-              </p>
-              <ul>
-                <li>
-                  <Check />
-                  Free DfM review before any tooling
-                </li>
-                <li>
-                  <Check />
-                  First article validated against your spec
-                </li>
-                <li>
-                  <Check />
-                  One supplier from 10 units to 10,000
-                </li>
-              </ul>
-              <a className="btn btn-primary" href="#">
-                Start a new project
-              </a>
-            </div>
-            <div className="pathcard">
-              <div className="iconwrap">
-                <svg viewBox="0 0 24 24">
-                  <path d="M21 12a9 9 0 1 1-2.64-6.36" />
-                  <path d="M21 3v5h-5" />
-                </svg>
-              </div>
-              <div className="eyebrow">Existing product</div>
-              <h3 style={{ margin: "10px 0" }}>
-                Work with parts you already make
-              </h3>
-              <p className="muted">
-                Already in production elsewhere? Send us the part you make today
-                and we&apos;ll deliver it to a higher standard, at a better
-                price, or faster.
-              </p>
-              <ul>
-                <li>
-                  <Check />
-                  Benchmark against your current supplier
-                </li>
-                <li>
-                  <Check />
-                  Engineer-led cost &amp; quality review
-                </li>
-                <li>
-                  <Check />
-                  Switch over without re-qualifying from zero
-                </li>
-              </ul>
-              <a className="btn btn-primary" href="#">
-                Optimise an existing part
-              </a>
-            </div>
-          </div>
-          <div className="video" style={{ marginTop: 30 }}>
-            <div className="playbtn">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-            <div style={{ position: "absolute", bottom: 18, left: 0, right: 0 }}>
-              VIDEO: owner-led factory &amp; cleanroom walkthrough — the
-              highest-trust asset
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ============ HOW TO GET STARTED (swappable design per variant) ============ */}
+      <GetStarted variant={variant} />
 
       {/* ============ FAQ ============ */}
       <section className="pad">
@@ -556,25 +482,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* trust strip */}
-      <div className="trust">
-        <div className="wrap">
-          <span>Building for OEMs in</span>
-          <strong>Medical Devices</strong>
-          <span>·</span>
-          <strong>Aerospace &amp; Defence</strong>
-          <span>·</span>
-          <strong>Industrial Automation</strong>
-          <span>·</span>
-          <strong>Semiconductor</strong>
-          <span>·</span>
-          <strong>EV &amp; Clean Energy</strong>
-          <span style={{ opacity: 0.6, fontStyle: "italic" }}>
-            (client logos when available)
-          </span>
-        </div>
-      </div>
-
       {/* ============ CLOSING CTA BAND ============ */}
       <section className="pad cta-band">
         <div className="wrap">
@@ -593,10 +500,7 @@ export default function Home() {
       {/* ============ FOOTER ============ */}
       <footer className="pad" style={{ padding: "72px 0 36px" }}>
         <div className="wrap">
-          <div
-            className="grid"
-            style={{ gridTemplateColumns: "1.4fr 1fr 1fr 1fr" }}
-          >
+          <div className="grid footgrid">
             <div>
               <div className="logo" style={{ color: "#fff" }}>
                 PRO<b style={{ color: "#fff" }}>C</b>ISION

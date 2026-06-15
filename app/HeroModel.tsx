@@ -2,13 +2,25 @@
 
 import Spline from "@splinetool/react-spline";
 import type { Application } from "@splinetool/runtime";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SCENE_URL = "https://prod.spline.design/JmLPo3wJGCntwN9w/scene.splinecode";
 
 export default function HeroModel() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const autoRotateRaf = useRef(0);
+  // Don't load/run the 3D scene on mobile — it's hidden there (see globals.css)
+  // and the render loop would only waste bandwidth and battery. Starts false so
+  // SSR and first client render match; the effect flips it after mount.
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 860px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   // Stop the idle-tumble loop when the component unmounts.
   useEffect(() => {
@@ -133,7 +145,9 @@ export default function HeroModel() {
 
   return (
     <div className="hero-media" ref={wrapRef}>
-      <Spline scene={SCENE_URL} onLoad={onLoad} className="spline-stage" />
+      {!isMobile && (
+        <Spline scene={SCENE_URL} onLoad={onLoad} className="spline-stage" />
+      )}
     </div>
   );
 }

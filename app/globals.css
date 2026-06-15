@@ -24,6 +24,11 @@
 html {
   scroll-behavior: smooth;
 }
+/* freeze page scroll behind the open mobile menu */
+html.menu-open,
+html.menu-open body {
+  overflow: hidden;
+}
 body {
   margin: 0;
   font-family: var(--font-inter), -apple-system, Segoe UI, Roboto, Helvetica,
@@ -337,8 +342,8 @@ p {
 
 /* ---- manufacturing services (tabbed) ---- */
 .svc {
-  max-width: 1040px;
-  margin: 0 auto;
+  /* full wrap width so tabs + panel left-align with the section heading */
+  margin: 0;
 }
 /* tab bar — left-aligned, underline marks the active service */
 .svc-tabs {
@@ -373,6 +378,24 @@ p {
 .svc-tab.is-active {
   color: var(--ink);
   border-bottom-color: var(--accent);
+}
+/* on mobile the three labels can't fit on one row — scroll them horizontally
+   instead of wrapping onto extra lines (scrollbar hidden, swipe to reach all) */
+@media (max-width: 860px) {
+  .svc-tabs {
+    flex-wrap: nowrap;
+    gap: 0 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .svc-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .svc-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
 }
 /* three columns: intro · checklist · media */
 .svc-panel {
@@ -544,6 +567,14 @@ p {
   text-align: center;
   background: var(--tint);
 }
+.kpi strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
 .kpi em {
   display: block;
   font-style: normal;
@@ -713,9 +744,11 @@ p {
      element in page.tsx. The Lightning CSS build (Turbopack/Tailwind) collapses
      the prefixed + standard pair down to a single property here, so neither the
      CSS rule nor browserslist can keep BOTH — inline styles bypass that. */
-  background: rgba(18, 18, 18, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  background: rgba(18, 18, 18, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 .csbig-tag {
   display: inline-block;
@@ -996,6 +1029,121 @@ header.nav.scrolled {
   /* push the menu (and the CTA after it) to the right edge */
   margin-left: auto;
   margin-right: 32px;
+}
+/* ---- mobile burger + slide-down menu (hidden on desktop) ---- */
+.nav-burger {
+  display: none; /* shown only at <=860px (see media query) */
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: #fff;
+}
+.nav-burger-box {
+  position: relative;
+  width: 24px;
+  height: 16px;
+}
+.nav-burger-box span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
+}
+.nav-burger-box span:nth-child(1) {
+  top: 0;
+}
+.nav-burger-box span:nth-child(2) {
+  top: 7px;
+}
+.nav-burger-box span:nth-child(3) {
+  top: 14px;
+}
+.nav-burger.is-open .nav-burger-box span:nth-child(1) {
+  top: 7px;
+  transform: rotate(45deg);
+}
+.nav-burger.is-open .nav-burger-box span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.is-open .nav-burger-box span:nth-child(3) {
+  top: 7px;
+  transform: rotate(-45deg);
+}
+.mobile-menu {
+  display: none; /* enabled at <=860px */
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 72px; /* below the 72px nav bar */
+  bottom: 0;
+  z-index: 49;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 28px 40px;
+  background: var(--ink);
+  border-top: 1px solid var(--navy-line);
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+}
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.mobile-menu-primary {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--navy-line);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.mobile-menu-primary a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding: 14px 0;
+}
+.mobile-menu-primary a:active {
+  color: #bdbdbd;
+}
+.mobile-menu-group h4 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 6px 0 10px;
+}
+.mobile-menu-group a {
+  display: block;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  font-size: 16px;
+  padding: 11px 0;
+}
+.mobile-menu-cta {
+  margin-top: 22px;
+  justify-content: center;
+  width: 100%;
+  /* invert so the CTA reads as a button on the dark panel */
+  background: #fff;
+  color: #0a0a0a;
+}
+.mobile-menu-cta:hover {
+  background: #e6e6e6;
 }
 .navitem {
   position: relative;
@@ -1427,6 +1575,11 @@ footer {
 footer .grid {
   gap: 36px;
 }
+/* footer columns live in CSS (not inline) so the mobile media query can
+   collapse them — an inline grid-template would override the breakpoint */
+.footgrid {
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+}
 footer h4 {
   color: #fff;
   font-size: 14px;
@@ -1616,19 +1769,573 @@ footer a:hover {
   .mega {
     display: none !important;
   }
+  /* swap the bar CTA for a burger that opens the slide-down menu */
+  .nav-cta {
+    display: none;
+  }
+  .nav-burger {
+    display: inline-flex;
+  }
+  .mobile-menu {
+    display: flex;
+  }
   .pad {
     padding: 72px 0;
   }
   .hero .lead {
     max-width: none;
   }
+  /* drop the 3D model on mobile — keeps the hero clean and avoids the canvas
+     overflowing on narrow screens */
   .hero-media {
-    height: auto;
-  }
-  .spline-stage {
-    height: 460px;
+    display: none;
   }
   footer .grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =====================================================================
+   GET STARTED — five swappable section designs (routes / and /1 … /5)
+   Strict monochrome, sharp corners. Shared bits first, then per-variant.
+   ===================================================================== */
+.gs .sectionhead {
+  margin-bottom: 48px;
+}
+/* shared checklist used across variants */
+.gs-list {
+  list-style: none;
+  margin: 18px 0 26px;
+  padding: 0;
+}
+.gs-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin-bottom: 11px;
+  color: var(--ink);
+}
+.gs-list li svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* outline button for dark panels (pairs with existing .btn-light) */
+.btn-outline-light {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.btn-outline-light:hover {
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---- Variant 1: numbered split, primary path inverted ---------------- */
+.gs1 {
+  background: #fff;
+}
+.gs1-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.gs1-card {
+  position: relative;
+  overflow: hidden;
+  padding: 40px;
+  border: 1px solid var(--line);
+  background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.gs1-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-lg);
+}
+.gs1-card.is-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.gs1-num {
+  position: absolute;
+  top: 14px;
+  right: 26px;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--accent-soft);
+  pointer-events: none;
+}
+.gs1-card.is-primary .gs1-num {
+  color: rgba(255, 255, 255, 0.1);
+}
+.gs1-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.gs1-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.gs1-card.is-primary .gs1-icon {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.gs1-card.is-primary .gs1-icon svg {
+  stroke: #fff;
+}
+.gs1-card.is-primary .eyebrow {
+  color: #fff;
+  opacity: 0.7;
+}
+.gs1-card h3 {
+  font-size: 24px;
+  margin: 12px 0;
+  letter-spacing: -0.02em;
+}
+.gs1-body {
+  color: var(--mute);
+  font-size: 15px;
+}
+.gs1-card.is-primary .gs1-body {
+  color: rgba(255, 255, 255, 0.78);
+}
+.gs1-card.is-primary .gs-list li {
+  color: rgba(255, 255, 255, 0.9);
+}
+.gs1-card.is-primary .gs-list li svg {
+  stroke: #fff;
+}
+/* factory walkthrough video below the V1 cards — autoplay on scroll, click to pause */
+.gs-video {
+  position: relative;
+  /* reset the UA <figure> 40px side margins so width matches the cards above */
+  margin: 40px 0 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+  cursor: pointer;
+  box-shadow: var(--sh);
+}
+.gs-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* grayscale keeps the footage inside the site's monochrome system */
+  filter: grayscale(1) contrast(1.04) brightness(0.95);
+}
+.gs-video-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0) 42%
+  );
+}
+.gs-video-cap {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  z-index: 2;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+.gs-video-play {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.gs-video.is-paused .gs-video-play {
+  opacity: 1;
+}
+.gs-video-play > span {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gs-video-play svg {
+  width: 26px;
+  height: 26px;
+  margin-left: 3px;
+  fill: #fff;
+}
+
+/* ---- Variant 2: guided process timeline + single CTA ----------------- */
+.gs2 {
+  background: var(--tint);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.gs2-track {
+  list-style: none;
+  margin: 0 0 44px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.gs2-step {
+  position: relative;
+  padding-top: 6px;
+}
+.gs2-step::before {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 40px;
+  right: -28px;
+  height: 2px;
+  background: var(--line);
+  z-index: 0;
+}
+.gs2-step:last-child::before {
+  display: none;
+}
+.gs2-node {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+}
+.gs2-step h4 {
+  font-size: 16.5px;
+  margin: 18px 0 8px;
+  letter-spacing: -0.01em;
+}
+.gs2-step p {
+  color: var(--mute);
+  font-size: 14px;
+}
+.gs2-cta {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---- Variant 3: editorial split (statement + path list) -------------- */
+.gs3 {
+  background: #fff;
+}
+.gs3-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 56px;
+  align-items: center;
+}
+.gs3-lead .eyebrow {
+  display: block;
+  margin-bottom: 14px;
+}
+.gs3-lead h2 {
+  font-size: clamp(30px, 3.6vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0 0 18px;
+}
+.gs3-lead .lead {
+  margin-bottom: 28px;
+}
+.gs3-paths {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.gs3-path {
+  display: flex;
+  gap: 22px;
+  padding: 26px 28px;
+  border: 1px solid var(--line);
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.gs3-path:hover {
+  transform: translateX(4px);
+  box-shadow: var(--sh);
+  border-color: var(--ink);
+}
+.gs3-path-icon {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+}
+.gs3-path-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.gs3-path-copy h3 {
+  font-size: 19px;
+  margin: 8px 0;
+  letter-spacing: -0.01em;
+}
+.gs3-path-copy p {
+  color: var(--mute);
+  font-size: 14.5px;
+  margin-bottom: 12px;
+}
+.gs3-path-link svg {
+  transition: transform 0.2s ease;
+}
+.gs3-path:hover .gs3-path-link svg {
+  transform: translateX(4px);
+}
+
+/* ---- Variant 4: full-black high-contrast band ------------------------ */
+.gs4 {
+  background: var(--ink);
+  border-top: 1px solid var(--navy-line);
+  border-bottom: 1px solid var(--navy-line);
+}
+.gs4 .sectionhead h2 {
+  color: #fff;
+}
+.gs4 .sectionhead .lead {
+  color: #b5b5b5;
+}
+.gs4-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.gs4-card {
+  position: relative;
+  overflow: hidden;
+  padding: 38px;
+  background: var(--navy3);
+  border: 1px solid var(--navy-line);
+  color: #fff;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.gs4-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.gs4-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #fff;
+}
+.gs4-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.gs4-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.gs4-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.6;
+}
+.gs4-num {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: rgba(255, 255, 255, 0.18);
+}
+.gs4 .eyebrow {
+  color: #fff;
+  opacity: 0.7;
+}
+.gs4-card h3 {
+  color: #fff;
+  font-size: 23px;
+  margin: 10px 0 12px;
+  letter-spacing: -0.02em;
+}
+.gs4-body {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+}
+.gs4 .gs-list li {
+  color: rgba(255, 255, 255, 0.9);
+}
+.gs4 .gs-list li svg {
+  stroke: #fff;
+}
+
+/* ---- Variant 5: concierge action card (single dark panel) ------------ */
+.gs5 {
+  background: var(--tint);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.gs5-card {
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--ink);
+  color: #fff;
+  padding: 56px clamp(28px, 5vw, 64px);
+  box-shadow: var(--sh-lg);
+}
+.gs5-head {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 40px;
+}
+.gs5-head .eyebrow {
+  display: block;
+  color: #fff;
+  opacity: 0.7;
+  margin-bottom: 14px;
+}
+.gs5-head h2 {
+  color: #fff;
+  font-size: clamp(26px, 3vw, 36px);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.gs5-head p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15.5px;
+}
+.gs5-paths {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--navy-line);
+}
+.gs5-path {
+  padding: 32px;
+}
+.gs5-path + .gs5-path {
+  border-left: 1px solid var(--navy-line);
+}
+.gs5-path-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.gs5-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.gs5-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.6;
+}
+.gs5-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+.gs5-path h3 {
+  color: #fff;
+  font-size: 19px;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.gs5 .gs-list {
+  margin: 14px 0 18px;
+}
+.gs5 .gs-list li {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+}
+.gs5 .gs-list li svg {
+  stroke: #fff;
+}
+.gs5-link {
+  color: #fff;
+}
+.gs5-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+@media (max-width: 860px) {
+  .gs1-grid,
+  .gs4-grid,
+  .gs2-track,
+  .gs3-grid,
+  .gs5-paths {
+    grid-template-columns: 1fr;
+  }
+  .gs2-step::before {
+    display: none;
+  }
+  .gs3-grid {
+    gap: 34px;
+  }
+  .gs5-path + .gs5-path {
+    border-left: 0;
+    border-top: 1px solid var(--navy-line);
   }
 }
