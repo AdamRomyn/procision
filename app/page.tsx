@@ -2,6 +2,7 @@ import HeroModel from "./HeroModel";
 import Nav from "./Nav";
 import ServicesTabs from "./ServicesTabs";
 import GetStarted from "./GetStarted";
+import Footer from "./Footer";
 
 /* Plain <img>/public assets aren't auto-prefixed with Next's basePath the way
    /_next assets are, so on GitHub Pages (served under /procision) a root path
@@ -239,9 +240,9 @@ export function Landing({ variant = 1 }: { variant?: number }) {
               <div className="eyebrow">Meet the team</div>
               <h2>We are a world-class manufacturing team.</h2>
               <p className="lead">
-                Four Western founders living in China, and 120 staff across every
-                discipline — all passionate about making the best parts for the
-                best products in the world.
+                Three Western founders living in China, and 170 staff across
+                every discipline — all passionate about making the best parts
+                for the best products in the world.
               </p>
 
               <ul className="team-trust">
@@ -273,7 +274,7 @@ export function Landing({ variant = 1 }: { variant?: number }) {
                 <span className="media-code">THE FOUNDERS</span>
                 <img
                   src={`${BASE_PATH}/founders.avif`}
-                  alt="The four founders of Procision together at the factory in China"
+                  alt="The three founders of Procision together at the factory in China"
                   loading="lazy"
                 />
                 <div className="team-photo-cap">
@@ -283,12 +284,12 @@ export function Landing({ variant = 1 }: { variant?: number }) {
               {/* floating stat badge — visual interest + reinforces the numbers */}
               <div className="team-badge">
                 <div>
-                  <strong>4</strong>
+                  <strong>3</strong>
                   <span>Founders</span>
                 </div>
                 <div className="team-badge-div" />
                 <div>
-                  <strong>120</strong>
+                  <strong>170</strong>
                   <span>Staff</span>
                 </div>
               </div>
@@ -503,55 +504,7 @@ export function Landing({ variant = 1 }: { variant?: number }) {
       </section>
 
       {/* ============ FOOTER ============ */}
-      <footer className="pad" style={{ padding: "72px 0 36px" }}>
-        <div className="wrap">
-          <div className="grid footgrid">
-            <div>
-              <div className="logo" style={{ color: "#fff" }}>
-                PRO<b style={{ color: "#fff" }}>C</b>ISION
-              </div>
-              <p style={{ marginTop: 14, maxWidth: 260 }}>
-                Western-owned precision manufacturing in China. Prototype to
-                production, one quality system.
-              </p>
-              <p style={{ fontStyle: "italic" }}>[Location / city — to confirm]</p>
-            </div>
-            <div>
-              <h4>Services</h4>
-              <a href="#">CNC machining</a>
-              <a href="#">EDM</a>
-              <a href="#">Injection moulding</a>
-              <a href="#">Cleanroom moulding</a>
-              <a href="#">Inspection &amp; validation</a>
-              <a href="#">Optimise existing parts</a>
-            </div>
-            <div>
-              <h4>Industries</h4>
-              <a href="#">Medical Devices</a>
-              <a href="#">Aerospace &amp; Defence</a>
-              <a href="#">Industrial Automation</a>
-              <a href="#">Semiconductor</a>
-              <a href="#">EV &amp; Clean Energy</a>
-            </div>
-            <div>
-              <h4>Company</h4>
-              <a href="#">Case studies</a>
-              <a href="#">Compliance</a>
-              <a href="#">About us</a>
-              <a href="#">Virtual tour</a>
-              <a href="#">Request a DfM audit</a>
-              <a href="#">LinkedIn</a>
-            </div>
-          </div>
-          <div
-            className="footbar wrap"
-            style={{ paddingLeft: 0, paddingRight: 0 }}
-          >
-            © Procision — design draft (iter 007). Copy final, imagery
-            placeholder. Not for production.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

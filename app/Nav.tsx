@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 /* small outline glyphs for the mega-menu item boxes — one unique per item */
@@ -90,14 +91,19 @@ const IconAutomotive = () => (
   </svg>
 );
 
-/* primary links + a compact capabilities list for the mobile menu */
-const MOBILE_PRIMARY = ["Services", "Case Studies", "About Us"];
+/* primary links + a compact capabilities list for the mobile menu.
+   href "#" = placeholder page not built yet */
+const MOBILE_PRIMARY = [
+  { label: "Services", href: "/cnc-machining" },
+  { label: "Case Studies", href: "#" },
+  { label: "About Us", href: "/about" },
+];
 const MOBILE_CAPABILITIES = [
-  "CNC machining",
-  "Injection moulding",
-  "Cleanroom moulding",
-  "Inspection & validation",
-  "Optimise existing parts",
+  { label: "CNC machining", href: "/cnc-machining" },
+  { label: "Injection moulding", href: "#" },
+  { label: "Cleanroom moulding", href: "#" },
+  { label: "Inspection & validation", href: "#" },
+  { label: "Optimise existing parts", href: "#" },
 ];
 
 export default function Nav() {
@@ -194,12 +200,12 @@ export default function Nav() {
                 <div className="mega-groups">
                   <div className="mega-group">
                     <h4>Capabilities</h4>
-                    <a className="mega-item" href="#">
+                    <Link className="mega-item" href="/cnc-machining">
                       <span className="mega-ico">
                         <IconCnc />
                       </span>
                       CNC machining
-                    </a>
+                    </Link>
                     <a className="mega-item" href="#">
                       <span className="mega-ico">
                         <IconMultiAxis />
@@ -305,7 +311,7 @@ export default function Nav() {
             <span>Case Studies</span>
           </div>
           <div className="navitem">
-            <span>About Us</span>
+            <Link href="/about">About Us</Link>
           </div>
         </nav>
         <a className="btn btn-primary nav-cta" href="#start">
@@ -334,18 +340,26 @@ export default function Nav() {
         aria-hidden={!menuOpen}
       >
         <nav className="mobile-menu-primary">
-          {MOBILE_PRIMARY.map((label) => (
-            <a key={label} href="#" onClick={() => setMenuOpen(false)}>
-              {label}
-            </a>
+          {MOBILE_PRIMARY.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
           ))}
         </nav>
         <div className="mobile-menu-group">
           <h4>Capabilities</h4>
-          {MOBILE_CAPABILITIES.map((label) => (
-            <a key={label} href="#" onClick={() => setMenuOpen(false)}>
-              {label}
-            </a>
+          {MOBILE_CAPABILITIES.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
           ))}
         </div>
         <a

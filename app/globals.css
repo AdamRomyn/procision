@@ -1148,13 +1148,15 @@ header.nav.scrolled {
 .navitem {
   position: relative;
 }
-.navitem > span {
+.navitem > span,
+.navitem > a {
   cursor: pointer;
   padding: 26px 0;
   display: inline-flex;
   align-items: center;
   gap: 5px;
   color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
   transition: color 0.15s ease;
 }
 .navitem > span svg {
@@ -1164,7 +1166,8 @@ header.nav.scrolled {
   fill: none;
   stroke-width: 2;
 }
-.navitem:hover > span {
+.navitem:hover > span,
+.navitem:hover > a {
   color: #ffffff;
 }
 .mega {
