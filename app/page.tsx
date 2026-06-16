@@ -3,6 +3,11 @@ import Nav from "./Nav";
 import ServicesTabs from "./ServicesTabs";
 import GetStarted from "./GetStarted";
 
+/* Plain <img>/public assets aren't auto-prefixed with Next's basePath the way
+   /_next assets are, so on GitHub Pages (served under /procision) a root path
+   like "/founders.avif" 404s. Prepend the build-time base path ourselves. */
+const BASE_PATH = process.env.PAGES_BASE_PATH || "";
+
 const ArrowRight = () => (
   <svg
     viewBox="0 0 24 24"
@@ -267,7 +272,7 @@ export function Landing({ variant = 1 }: { variant?: number }) {
               <figure className="team-photo">
                 <span className="media-code">THE FOUNDERS</span>
                 <img
-                  src="/founders.avif"
+                  src={`${BASE_PATH}/founders.avif`}
                   alt="The four founders of Procision together at the factory in China"
                   loading="lazy"
                 />
