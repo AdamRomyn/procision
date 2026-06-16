@@ -192,7 +192,7 @@ export default function Nav() {
                     href="#start"
                     style={{ padding: "9px 16px", fontSize: "13.5px" }}
                   >
-                    Request a DfM audit
+                    Request a DFM audit
                   </a>
                 </aside>
 
@@ -315,7 +315,7 @@ export default function Nav() {
           </div>
         </nav>
         <a className="btn btn-primary nav-cta" href="#start">
-          Request a DfM audit
+          Request a DFM audit
         </a>
         <button
           type="button"
@@ -367,7 +367,7 @@ export default function Nav() {
           href="#start"
           onClick={() => setMenuOpen(false)}
         >
-          Request a DfM audit
+          Request a DFM audit
         </a>
       </div>
     </header>

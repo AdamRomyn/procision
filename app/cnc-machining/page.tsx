@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Nav from "../Nav";
 import Footer from "../Footer";
+import LogoStrip from "../LogoStrip";
+import MeetTeam from "../MeetTeam";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -78,7 +80,7 @@ const VALUE_PROPS = [
   {
     icon: <IcoEngineer />,
     title: "Engineer to engineer",
-    body: "You talk to the engineers and owners machining your parts — not a sales relay. DfM feedback comes back fast, in language that moves your design forward.",
+    body: "You talk to the engineers and owners machining your parts — not a sales relay. DFM feedback comes back fast, in language that moves your design forward.",
   },
   {
     icon: <IcoQuality />,
@@ -208,6 +210,14 @@ const MATERIALS = [
 ];
 
 export default function CncMachiningPage() {
+  return <CncMachiningPageContent />;
+}
+
+export function CncMachiningPageContent({
+  showMeetTeam = false,
+}: {
+  showMeetTeam?: boolean;
+}) {
   return (
     <>
       <Nav />
@@ -250,6 +260,11 @@ export default function CncMachiningPage() {
           </div>
         </div>
       </section>
+
+      {/* ============ LOGO SCROLLER (same strip as home page) ============ */}
+      <LogoStrip />
+
+      {showMeetTeam ? <MeetTeam /> : null}
 
       {/* ============ 2 · WHY PROCISION (worth their time) ============ */}
       <section className="pad">

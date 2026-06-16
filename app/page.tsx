@@ -3,11 +3,8 @@ import Nav from "./Nav";
 import ServicesTabs from "./ServicesTabs";
 import GetStarted from "./GetStarted";
 import Footer from "./Footer";
-
-/* Plain <img>/public assets aren't auto-prefixed with Next's basePath the way
-   /_next assets are, so on GitHub Pages (served under /procision) a root path
-   like "/founders.avif" 404s. Prepend the build-time base path ourselves. */
-const BASE_PATH = process.env.PAGES_BASE_PATH || "";
+import LogoStrip from "./LogoStrip";
+import MeetTeam from "./MeetTeam";
 
 const ArrowRight = () => (
   <svg
@@ -33,51 +30,6 @@ const Phone = () => (
   >
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
   </svg>
-);
-
-const Check = () => (
-  <svg viewBox="0 0 24 24" fill="none">
-    <path d="M20 6 9 17l-5-5" />
-  </svg>
-);
-
-/* dummy client wordmarks for the grayscale scroller (placeholder) */
-const LOGOS = [
-  "NORTHWIND",
-  "AXIOM",
-  "VERTEX",
-  "MERIDIAN",
-  "CALIBRE",
-  "HELIOS",
-  "FORGEWORKS",
-  "APEX DYNAMICS",
-];
-
-/* one marquee group must be wider than any viewport for the -50% loop to be
-   seamless (otherwise the track exposes white space before it wraps), so repeat
-   the list enough to comfortably exceed ultra-wide screens */
-const MARQUEE_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS];
-
-/* simple geometric marks so each placeholder reads as a logo */
-const LogoMark = ({ variant }: { variant: number }) => {
-  const marks = [
-    <path key="0" d="M12 2 2 22h20L12 2z" />,
-    <circle key="1" cx="12" cy="12" r="9" />,
-    <rect key="2" x="3" y="3" width="18" height="18" rx="2" />,
-    <path key="3" d="M12 2v20M2 12h20" />,
-  ];
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      {marks[variant % marks.length]}
-    </svg>
-  );
-};
-
-const DummyLogo = ({ name, variant }: { name: string; variant: number }) => (
-  <span className="dummylogo">
-    <LogoMark variant={variant} />
-    {name}
-  </span>
 );
 
 /* case studies — placeholder copy + stock imagery (Unsplash, swap for real shots before prod) */
@@ -214,89 +166,10 @@ export function Landing({ variant = 1 }: { variant?: number }) {
       </section>
 
       {/* ============ LOGO SCROLLER (just below fold) ============ */}
-      <section className="logos">
-        {/* seamless infinite marquee: two identical groups, track scrolls -50% */}
-        <div className="marquee" aria-hidden="true">
-          <div className="marquee-track">
-            <div className="marquee-group">
-              {MARQUEE_LOGOS.map((name, i) => (
-                <DummyLogo key={`a-${i}`} name={name} variant={i % LOGOS.length} />
-              ))}
-            </div>
-            <div className="marquee-group">
-              {MARQUEE_LOGOS.map((name, i) => (
-                <DummyLogo key={`b-${i}`} name={name} variant={i % LOGOS.length} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <LogoStrip />
 
       {/* ============ MEET THE TEAM (just below fold) ============ */}
-      <section className="pad team">
-        <div className="wrap">
-          <div className="team-grid">
-            <div className="team-copy">
-              <div className="eyebrow">Meet the team</div>
-              <h2>We are a world-class manufacturing team.</h2>
-              <p className="lead">
-                Three Western founders living in China, and 170 staff across
-                every discipline — all passionate about making the best parts
-                for the best products in the world.
-              </p>
-
-              <ul className="team-trust">
-                <li>
-                  <Check />
-                  Western Engineering Standards
-                </li>
-                <li>
-                  <Check />
-                  Engineer-to-engineer, owners on the floor
-                </li>
-                <li>
-                  <Check />
-                  ISO 9001 &amp; ISO 13485 certified
-                </li>
-              </ul>
-
-              <div className="btns">
-                <a className="btn btn-primary" href="#">
-                  Learn more
-                  <ArrowRight />
-                </a>
-              </div>
-            </div>
-
-            {/* founders photo, framed + captioned so the section doesn't read plain */}
-            <div className="team-photo-wrap">
-              <figure className="team-photo">
-                <span className="media-code">THE FOUNDERS</span>
-                <img
-                  src={`${BASE_PATH}/founders.avif`}
-                  alt="The three founders of Procision together at the factory in China"
-                  loading="lazy"
-                />
-                <div className="team-photo-cap">
-                  <span className="team-flag">UK · Denmark · South Africa</span>
-                </div>
-              </figure>
-              {/* floating stat badge — visual interest + reinforces the numbers */}
-              <div className="team-badge">
-                <div>
-                  <strong>3</strong>
-                  <span>Founders</span>
-                </div>
-                <div className="team-badge-div" />
-                <div>
-                  <strong>170</strong>
-                  <span>Staff</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <MeetTeam />
 
       {/* ============ MANUFACTURING SERVICES ============ */}
       <section className="pad">
@@ -418,7 +291,7 @@ export function Landing({ variant = 1 }: { variant?: number }) {
             <p className="ans">
               <em>[Adam to confirm exact windows.]</em> We can compress lead
               times when you need speed (at a premium), or hit standard windows
-              at market-related cost. You&apos;ll get a firm date with your DfM
+              at market-related cost. You&apos;ll get a firm date with your DFM
               review.
             </p>
           </details>
@@ -477,7 +350,7 @@ export function Landing({ variant = 1 }: { variant?: number }) {
           </details>
           <details className="acc">
             <summary>
-              What does a DfM audit cost?<span className="pm">+</span>
+              What does a DFM audit cost?<span className="pm">+</span>
             </summary>
             <p className="ans">
               Nothing. Send your part and an engineer reviews it — feasibility,

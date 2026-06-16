@@ -40,7 +40,7 @@ export default function Footer() {
             <a href="#">Compliance</a>
             <Link href="/about">About us</Link>
             <a href="#">Virtual tour</a>
-            <a href="#">Request a DfM audit</a>
+            <a href="#">Request a DFM audit</a>
             <a href="#">LinkedIn</a>
           </div>
         </div>

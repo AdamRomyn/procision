@@ -45,7 +45,7 @@ const PATHS = [
     title: "Prototype → production",
     body: "Got a design or an idea? We prototype it, prove it out together, and scale the same part to thousands — on one quality system, without re-sourcing.",
     points: [
-      "Free DfM review before any tooling",
+      "Free DFM review before any tooling",
       "First article validated against your spec",
       "One supplier from 10 units to 10,000",
     ],
@@ -73,7 +73,7 @@ const STEPS = [
     body: "Send a drawing, a CAD file, or just a sample of what you make today.",
   },
   {
-    title: "Free DfM review",
+    title: "Free DFM review",
     body: "An engineer reviews manufacturability, cost, and risks — before any tooling.",
   },
   {
@@ -162,7 +162,7 @@ function V2() {
         </ol>
         <div className="gs2-cta">
           <a className="btn btn-primary" href="#start">
-            Start with a free DfM review
+            Start with a free DFM review
             <ArrowRight />
           </a>
           <a className="btn btn-ghost" href="#">
